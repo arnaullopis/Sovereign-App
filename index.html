@@ -73,6 +73,7 @@
   .lb-nav-item:hover .lb-navicon-deudas { transform: translateY(-2px) rotate(-6deg); }
   .lb-nav-item:hover .lb-navicon-importar { transform: translateY(-3px); }
   .lb-nav-item:hover .lb-navicon-ajustes { transform: rotate(55deg); }
+  .lb-nav-item:hover .lb-navicon-cripto { transform: rotateY(180deg); }
   .lb-nav-item.active { color: #FF6600; font-weight: 700; border-left-color: #FF6600; }
   .lb-nav-sub { padding-left: 24px; font-size: 12.5px; }
   .lb-nav-group-label { font-size: 10px; text-transform: uppercase; letter-spacing: .08em; color: #6B7280; margin: 14px 0 4px 12px; }
@@ -198,6 +199,7 @@
     recurrentes: '<polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/>',
     metas: '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5.5"/><circle cx="12" cy="12" r="2"/>',
     deudas: '<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="8" cy="7" r="3.5"/><path d="M22 21v-2a4 4 0 0 0-2.5-3.7"/><path d="M15.5 3.3a3.5 3.5 0 0 1 0 6.9"/>',
+    cripto: '<circle cx="12" cy="12" r="9"/><path d="M9.5 8.5h3.5a2 2 0 0 1 0 4H9.5m0 0h4a2 2 0 0 1 0 4H9.5m0-8v9M12 7v1.5M12 15.5V17"/>',
     importar: '<path d="M20 15v4a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-4"/><polyline points="16 8 12 4 8 8"/><line x1="12" y1="4" x2="12" y2="15"/>',
     ajustes: '<circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>'
   };
@@ -220,7 +222,7 @@
       hintSinActivos:'Sin activos registrados todav\u00eda.', hintSaldoAuto:'El saldo se ajusta autom\u00e1ticamente al asociar movimientos.', hintTransferInfo:'Resta de la cuenta de origen y suma en la de destino. No cuenta como gasto ni ingreso en tus informes.', hintSaldoMetaAuto:'Si asocias una cuenta, su saldo se actualiza autom\u00e1ticamente. Si asocias una meta, su progreso tambi\u00e9n se actualiza solo.', hintRecurrenteEj:'Por ejemplo: Spotify, Claude Pro, alquiler, n\u00f3mina. Se genera autom\u00e1ticamente cada vez que toca.', hintLimitesBase:'Los l\u00edmites se expresan en tu moneda principal para poder compararlos con gastos en cualquier moneda.', hintTransferLend:'Si es "Me debe" y eliges una cuenta, se resta el importe ahora mismo (como si prestaras el dinero) y se vuelve a sumar al saldar la deuda.', hintDeudaSaldar:'Al saldarla se registra el movimiento correspondiente.', hintAnadeCuenta:'A\u00f1ade una cuenta para empezar a ver tu patrimonio en el tiempo.', sinCuentas:'Sin cuentas todav\u00eda.', hintDosCuentas:'Necesitas al menos dos cuentas para transferir dinero entre ellas.', hintMantenPulsada:'Mant\u00e9n pulsada una transacci\u00f3n para seleccionar varias y eliminarlas juntas.', sinDeudas:'Sin deudas registradas.',
       saldo:'Saldo', objetivo:'Objetivo', ahorrado:'Ahorrado', fechaLimite:'Fecha l\u00edmite', categoria:'Categor\u00eda', origen:'Origen', recurrenteOrigen:'Recurrente', transferenciaOrigen:'Transferencia entre cuentas', limiteBaseMensual:'L\u00edmite base mensual', gastadoEsteMes:'Gastado este mes', frecuencia:'Frecuencia', persona:'Persona', direccion:'Direcci\u00f3n', motivo:'Motivo', estado:'Estado', disponibleRemanente:'Disponible este mes (con remanente)', divididoEn:'Dividido en',
       confirmDelete:'\u00bfSeguro? No se puede deshacer.', editCuenta:'Editar cuenta', editMovimiento:'Editar movimiento', editLimite:'Editar l\u00edmite', editMeta:'Editar meta', editRecurrente:'Editar recurrente', saldarDeuda:'Saldar deuda', editDeuda:'Editar deuda', seleccionado1:'seleccionado', seleccionados:'seleccionados', seleccionarTodas:'Seleccionar todas', deseleccionarTodas:'Deseleccionar todas', eliminarSeleccionados:'Eliminar seleccionados',
-      idioma:'Idioma', monedas:'Monedas',  tamanoTexto:'Tama\u00f1o de texto', pequena:'Peque\u00f1a', mediana:'Mediana', grande:'Grande', tiposDeCambio:'Tipos de cambio',  estiloGrafico:'Estilo de gr\u00e1fico', barras:'Barras', tarta:'Tarta', sankey:'Flujo', total:'Total', treemap:'Mapa de árbol',  nombreArchivo:'Nombre del archivo',
+      idioma:'Idioma', monedas:'Monedas',  tamanoTexto:'Tama\u00f1o de texto', pequena:'Peque\u00f1a', mediana:'Mediana', grande:'Grande', tiposDeCambio:'Tipos de cambio',  estiloGrafico:'Estilo de gr\u00e1fico',  cripto:'Cripto', activo:'Activo', cantidad:'Cantidad', precioActual:'Precio actual', valorTotal:'Valor total', anadirActivo:'A\u00f1adir activo', sinTenencias:'A\u00fan no has a\u00f1adido ning\u00fan activo.', cuentaVinculada:'Cuenta vinculada', actualizadoHace:'Actualizado hace', errorPrecios:'No se pudieron consultar los precios. Comprueba tu conexi\u00f3n.', consultandoPrecios:'Consultando precios\u2026', seleccionaActivo:'Selecciona un activo', primeroCreaUnaCuenta:'Primero crea una cuenta en la secci\u00f3n Cuentas.', barras:'Barras', tarta:'Tarta', sankey:'Flujo', total:'Total', treemap:'Mapa de árbol',  nombreArchivo:'Nombre del archivo',
       copiarCopia:'Copiar copia de seguridad', copiadoOk:'Copiado al portapapeles.', noSePudoCopiar:'No se pudo copiar. Prueba a exportar el archivo en su lugar.',
       sincronizacion:'Sincronizaci\u00f3n en la nube', syncDesc:'Crea una cuenta para que tus datos se sincronicen autom\u00e1ticamente entre el m\u00f3vil, el escritorio y cualquier otro dispositivo donde inicies sesi\u00f3n.', email:'Correo electr\u00f3nico', contrasena:'Contrase\u00f1a', crearCuenta:'Crear cuenta', iniciarSesion:'Iniciar sesi\u00f3n', cerrarSesion:'Cerrar sesi\u00f3n', sesionIniciadaComo:'Sesi\u00f3n iniciada como', sincronizando:'Sincronizando\u2026', sincronizadoOk:'Sincronizado', revisaCorreoConfirmacion:'Cuenta creada. Revisa tu correo para confirmarla antes de iniciar sesi\u00f3n.', categoriasPersonalizadas:'Categor\u00edas personalizadas', copiaSeguridad:'Copia de seguridad', exportarCopia:'Exportar copia', importarArchivo:'Importar copia (archivo)', importarTexto:'Importar copia (texto pegado)', borrarTodo:'Borrar todo',
       langDesc:'La navegaci\u00f3n, cabecera y buscador cambian de idioma. El resto de la app se sigue traduciendo poco a poco.', monedaDesc:'Elige tu moneda principal (en la que se calculan todos tus informes) y, si quieres, una secundaria que se muestre siempre entre par\u00e9ntesis.', monedaPrincipal:'Moneda principal', monedaSecundaria:'Moneda secundaria (opcional, se muestra entre par\u00e9ntesis)', ninguna:'Ninguna', tiposCambioDesc:'Cu\u00e1ntas unidades de {BASE} vale 1 unidad de cada moneda. Necesario para cualquier moneda que uses en cuentas o transacciones aparte de {BASE}.', quitar:'Quitar', tipoDeCambioPlaceholder:'Tipo de cambio', anadirMoneda:'A\u00f1adir moneda', catPersonalizadasDesc:'A\u00f1ade tus propias categor\u00edas, adem\u00e1s de las que ya trae la app.', nuevaCategoria:'Nueva categor\u00eda', transaccionesAntiguasAhorro:'Transacciones antiguas "Ahorro"', encontreTransacSing:'Encontr\u00e9 1 transacci\u00f3n con la categor\u00eda antigua "Ahorro". Elige la cuenta a la que iba destinada y la convierto en una transferencia real.', encontreTransacPlur:'Encontr\u00e9 {N} transacciones con la categor\u00eda antigua "Ahorro". Elige la cuenta a la que iban destinadas y las convierto en transferencias reales.', convertirTransferencias:'Convertir en transferencias', convertidasMsg:'{N} convertida(s).', omitidasMsg:', {M} omitida(s) (sin cuenta original o misma cuenta de destino).', datosSoloNavegador:'Tus datos solo viven en este navegador. Exporta una copia peri\u00f3dicamente por si acaso.', errorFormatoArchivo:'El archivo no tiene el formato esperado de una copia de Libra.', copiaImportadaOk:'Copia importada correctamente.', noSePudoImportar:'No se pudo importar. Comprueba que sea una copia de seguridad v\u00e1lida de Libra.', noSePudoLeer:'No se pudo leer el archivo.', pegaAquiHint:'\u00bfEl selector de archivos no se abre (pasa a veces en la app m\u00f3vil)? Pega aqu\u00ed el contenido del archivo .json exportado.', pegaAquiPlaceholder:'Pega aqu\u00ed el contenido del archivo...', borrarTodosDatos:'Borrar todos los datos', borrarTodosDesc:'Esto elimina cuentas, movimientos, presupuestos, metas y recurrentes guardados. No se puede deshacer.', cargandoDatos:'Cargando tus datos...',
@@ -249,7 +251,7 @@
       hintSinActivos:'No holdings recorded yet.', hintSaldoAuto:'The balance updates automatically when you link transactions.', hintTransferInfo:'Subtracts from the source account and adds to the destination. Does not count as an expense or income in your reports.', hintSaldoMetaAuto:'If you link an account, its balance updates automatically. If you link a goal, its progress updates automatically too.', hintRecurrenteEj:'For example: Spotify, Claude Pro, rent, salary. Generated automatically each time it is due.', hintLimitesBase:'Limits are shown in your main currency so they can be compared with expenses in any currency.', hintTransferLend:'If it is "Owed to me" and you choose an account, the amount is subtracted right away (as if you lent the money) and added back when the debt is settled.', hintDeudaSaldar:'Settling it records the corresponding transaction.', hintAnadeCuenta:'Add an account to start seeing your net worth over time.', sinCuentas:'No accounts yet.', hintDosCuentas:'You need at least two accounts to transfer money between them.', hintMantenPulsada:'Press and hold a transaction to select several and delete them together.', sinDeudas:'No debts recorded.',
       saldo:'Balance', objetivo:'Target', ahorrado:'Saved', fechaLimite:'Deadline', categoria:'Category', origen:'Source', recurrenteOrigen:'Recurring', transferenciaOrigen:'Account transfer', limiteBaseMensual:'Monthly base limit', gastadoEsteMes:'Spent this month', frecuencia:'Frequency', persona:'Person', direccion:'Direction', motivo:'Reason', estado:'Status', disponibleRemanente:'Available this month (with rollover)', divididoEn:'Split across',
       confirmDelete:'Are you sure? This cannot be undone.', editCuenta:'Edit account', editMovimiento:'Edit transaction', editLimite:'Edit limit', editMeta:'Edit goal', editRecurrente:'Edit recurring', saldarDeuda:'Settle debt', editDeuda:'Edit debt', seleccionado1:'selected', seleccionados:'selected', seleccionarTodas:'Select all', deseleccionarTodas:'Deselect all', eliminarSeleccionados:'Delete selected',
-      idioma:'Language', monedas:'Currencies',  tamanoTexto:'Text size', pequena:'Small', mediana:'Medium', grande:'Large', tiposDeCambio:'Exchange rates',  estiloGrafico:'Chart style', barras:'Bars', tarta:'Pie', sankey:'Flow', total:'Total', treemap:'Treemap',  nombreArchivo:'File name',
+      idioma:'Language', monedas:'Currencies',  tamanoTexto:'Text size', pequena:'Small', mediana:'Medium', grande:'Large', tiposDeCambio:'Exchange rates',  estiloGrafico:'Chart style',  cripto:'Crypto', activo:'Asset', cantidad:'Quantity', precioActual:'Current price', valorTotal:'Total value', anadirActivo:'Add asset', sinTenencias:'You haven\'t added any assets yet.', cuentaVinculada:'Linked account', actualizadoHace:'Updated', errorPrecios:'Could not fetch prices. Check your connection.', consultandoPrecios:'Fetching prices\u2026', seleccionaActivo:'Select an asset', primeroCreaUnaCuenta:'First create an account in the Cuentas section.', barras:'Bars', tarta:'Pie', sankey:'Flow', total:'Total', treemap:'Treemap',  nombreArchivo:'File name',
       copiarCopia:'Copy backup', copiadoOk:'Copied to clipboard.', noSePudoCopiar:'Could not copy. Try exporting the file instead.',
       sincronizacion:'Cloud sync', syncDesc:'Create an account so your data syncs automatically between your phone, desktop, and any other device where you sign in.', email:'Email', contrasena:'Password', crearCuenta:'Create account', iniciarSesion:'Sign in', cerrarSesion:'Sign out', sesionIniciadaComo:'Signed in as', sincronizando:'Syncing\u2026', sincronizadoOk:'Synced', revisaCorreoConfirmacion:'Account created. Check your email to confirm it before signing in.', categoriasPersonalizadas:'Custom categories', copiaSeguridad:'Backup', exportarCopia:'Export backup', importarArchivo:'Import backup (file)', importarTexto:'Import backup (pasted text)', borrarTodo:'Delete everything',
       langDesc:'The navigation, header and search bar change language. The rest of the app is still being translated gradually.', monedaDesc:'Choose your main currency (used to calculate all your reports) and, if you want, a secondary one always shown in parentheses.', monedaPrincipal:'Main currency', monedaSecundaria:'Secondary currency (optional, shown in parentheses)', ninguna:'None', tiposCambioDesc:'How many units of {BASE} equal 1 unit of each currency. Needed for any currency you use in accounts or transactions other than {BASE}.', quitar:'Remove', tipoDeCambioPlaceholder:'Exchange rate', anadirMoneda:'Add currency', catPersonalizadasDesc:'Add your own categories, in addition to the ones already in the app.', nuevaCategoria:'New category', transaccionesAntiguasAhorro:'Old "Ahorro" transactions', encontreTransacSing:'Found 1 transaction with the old "Ahorro" category. Choose the account it was meant for and I\u2019ll convert it into a real transfer.', encontreTransacPlur:'Found {N} transactions with the old "Ahorro" category. Choose the account they were meant for and I\u2019ll convert them into real transfers.', convertirTransferencias:'Convert into transfers', convertidasMsg:'{N} converted.', omitidasMsg:', {M} skipped (no original account or same destination account).', datosSoloNavegador:'Your data only lives in this browser. Export a backup periodically, just in case.', errorFormatoArchivo:'The file does not have the expected format of a Libra backup.', copiaImportadaOk:'Backup imported successfully.', noSePudoImportar:'Could not import. Check that it is a valid Libra backup.', noSePudoLeer:'Could not read the file.', pegaAquiHint:'File picker not opening (this can happen in the mobile app)? Paste the contents of the exported .json file here.', pegaAquiPlaceholder:'Paste the file contents here...', borrarTodosDatos:'Delete all data', borrarTodosDesc:'This deletes saved accounts, transactions, budgets, goals and recurring items. This cannot be undone.', cargandoDatos:'Loading your data...',
@@ -278,7 +280,7 @@
       hintSinActivos:'Sense actius registrats encara.', hintSaldoAuto:'El saldo s\'ajusta autom\u00e0ticament en associar moviments.', hintTransferInfo:'Resta del compte d\'origen i suma al de dest\u00ed. No compta com a despesa ni ingr\u00e9s als teus informes.', hintSaldoMetaAuto:'Si associes un compte, el seu saldo s\'actualitza autom\u00e0ticament. Si associes un objectiu, el seu progr\u00e9s tamb\u00e9 s\'actualitza sol.', hintRecurrenteEj:'Per exemple: Spotify, Claude Pro, lloguer, n\u00f2mina. Es genera autom\u00e0ticament cada vegada que toca.', hintLimitesBase:'Els l\u00edmits s\'expressen en la teva moneda principal per poder comparar-los amb despeses en qualsevol moneda.', hintTransferLend:'Si \u00e9s "Em deu" i tries un compte, l\'import es resta ara mateix (com si prestessis els diners) i es torna a sumar en saldar el deute.', hintDeudaSaldar:'En saldar-lo es registra el moviment corresponent.', hintAnadeCuenta:'Afegeix un compte per comen\u00e7ar a veure el teu patrimoni al llarg del temps.', sinCuentas:'Sense comptes encara.', hintDosCuentas:'Necessites almenys dos comptes per transferir diners entre ells.', hintMantenPulsada:'Mant\u00e9n premuda una transacci\u00f3 per seleccionar-ne diverses i eliminar-les juntes.', sinDeudas:'Sense deutes registrats.',
       saldo:'Saldo', objetivo:'Objectiu', ahorrado:'Estalviat', fechaLimite:'Data l\u00edmit', categoria:'Categoria', origen:'Origen', recurrenteOrigen:'Recurrent', transferenciaOrigen:'Transfer\u00e8ncia entre comptes', limiteBaseMensual:'L\u00edmit base mensual', gastadoEsteMes:'Gastat aquest mes', frecuencia:'Freq\u00fc\u00e8ncia', persona:'Persona', direccion:'Direcci\u00f3', motivo:'Motiu', estado:'Estat', disponibleRemanente:'Disponible aquest mes (amb romanent)', divididoEn:'Dividit en',
       confirmDelete:'Segur? No es pot desfer.', editCuenta:'Editar compte', editMovimiento:'Editar moviment', editLimite:'Editar l\u00edmit', editMeta:'Editar objectiu', editRecurrente:'Editar recurrent', saldarDeuda:'Saldar deute', editDeuda:'Editar deute', seleccionado1:'seleccionat', seleccionados:'seleccionats', seleccionarTodas:'Seleccionar-les totes', deseleccionarTodas:'Desseleccionar-les totes', eliminarSeleccionados:'Eliminar seleccionats',
-      idioma:'Idioma', monedas:'Monedes',  tamanoTexto:'Mida del text', pequena:'Petita', mediana:'Mitjana', grande:'Gran', tiposDeCambio:'Tipus de canvi',  estiloGrafico:'Estil de gr\u00e0fic', barras:'Barres', tarta:'Past\u00eds', sankey:'Flux', total:'Total', treemap:'Mapa d’arbre',  nombreArchivo:'Nom del fitxer',
+      idioma:'Idioma', monedas:'Monedes',  tamanoTexto:'Mida del text', pequena:'Petita', mediana:'Mitjana', grande:'Gran', tiposDeCambio:'Tipus de canvi',  estiloGrafico:'Estil de gr\u00e0fic',  cripto:'Cripto', activo:'Actiu', cantidad:'Quantitat', precioActual:'Preu actual', valorTotal:'Valor total', anadirActivo:'Afegir actiu', sinTenencias:'Encara no has afegit cap actiu.', cuentaVinculada:'Compte vinculat', actualizadoHace:'Actualitzat fa', errorPrecios:'No s\'han pogut consultar els preus. Comprova la teva connexi\u00f3.', consultandoPrecios:'Consultant preus\u2026', seleccionaActivo:'Selecciona un actiu', primeroCreaUnaCuenta:'Primer crea un compte a la secci\u00f3 Comptes.', barras:'Barres', tarta:'Past\u00eds', sankey:'Flux', total:'Total', treemap:'Mapa d’arbre',  nombreArchivo:'Nom del fitxer',
       copiarCopia:'Copiar c\u00f2pia de seguretat', copiadoOk:'Copiat al porta-retalls.', noSePudoCopiar:'No s\'ha pogut copiar. Prova d\'exportar el fitxer.',
       sincronizacion:'Sincronitzaci\u00f3 al n\u00favol', syncDesc:'Crea un compte perqu\u00e8 les teves dades es sincronitzin autom\u00e0ticament entre el m\u00f2bil, l\u2019escriptori i qualsevol altre dispositiu on iniciis sessi\u00f3.', email:'Correu electr\u00f2nic', contrasena:'Contrasenya', crearCuenta:'Crear compte', iniciarSesion:'Iniciar sessi\u00f3', cerrarSesion:'Tancar sessi\u00f3', sesionIniciadaComo:'Sessi\u00f3 iniciada com', sincronizando:'Sincronitzant\u2026', sincronizadoOk:'Sincronitzat', revisaCorreoConfirmacion:'Compte creat. Revisa el teu correu per confirmar-lo abans d\u2019iniciar sessi\u00f3.', categoriasPersonalizadas:'Categories personalitzades', copiaSeguridad:'C\u00f2pia de seguretat', exportarCopia:'Exportar c\u00f2pia', importarArchivo:'Importar c\u00f2pia (fitxer)', importarTexto:'Importar c\u00f2pia (text enganxat)', borrarTodo:'Esborrar-ho tot',
       langDesc:'La navegaci\u00f3, cap\u00e7alera i cercador canvien d\'idioma. La resta de l\'app es continua traduint a poc a poc.', monedaDesc:'Tria la teva moneda principal (amb la qual es calculen tots els teus informes) i, si vols, una secund\u00e0ria que es mostri sempre entre par\u00e8ntesis.', monedaPrincipal:'Moneda principal', monedaSecundaria:'Moneda secund\u00e0ria (opcional, es mostra entre par\u00e8ntesis)', ninguna:'Cap', tiposCambioDesc:'Quantes unitats de {BASE} val 1 unitat de cada moneda. Necessari per a qualsevol moneda que facis servir en comptes o transaccions a part de {BASE}.', quitar:'Treure', tipoDeCambioPlaceholder:'Tipus de canvi', anadirMoneda:'Afegir moneda', catPersonalizadasDesc:'Afegeix les teves pr\u00f2pies categories, a m\u00e9s de les que ja porta l\'app.', nuevaCategoria:'Categoria nova', transaccionesAntiguasAhorro:'Transaccions antigues "Ahorro"', encontreTransacSing:'He trobat 1 transacci\u00f3 amb la categoria antiga "Ahorro". Tria el compte al qual anava destinada i la converteixo en una transfer\u00e8ncia real.', encontreTransacPlur:'He trobat {N} transaccions amb la categoria antiga "Ahorro". Tria el compte al qual anaven destinades i les converteixo en transfer\u00e8ncies reals.', convertirTransferencias:'Convertir en transfer\u00e8ncies', convertidasMsg:'{N} convertida(es).', omitidasMsg:', {M} omesa(es) (sense compte original o mateix compte de dest\u00ed).', datosSoloNavegador:'Les teves dades nom\u00e9s viuen en aquest navegador. Exporta una c\u00f2pia peri\u00f2dicament per si de cas.', errorFormatoArchivo:'El fitxer no t\u00e9 el format esperat d\'una c\u00f2pia de Libra.', copiaImportadaOk:'C\u00f2pia importada correctament.', noSePudoImportar:'No s\'ha pogut importar. Comprova que sigui una c\u00f2pia de seguretat v\u00e0lida de Libra.', noSePudoLeer:'No s\'ha pogut llegir el fitxer.', pegaAquiHint:'El selector d\'arxius no s\'obre (a vegades passa a l\'app m\u00f2bil)? Enganxa aqu\u00ed el contingut del fitxer .json exportat.', pegaAquiPlaceholder:'Enganxa aqu\u00ed el contingut del fitxer...', borrarTodosDatos:'Esborrar totes les dades', borrarTodosDesc:'Aix\u00f2 elimina comptes, moviments, pressupostos, objectius i recurrents desats. No es pot desfer.', cargandoDatos:'Carregant les teves dades...',
@@ -307,7 +309,7 @@
       hintSinActivos:'Aucun actif enregistr\u00e9 pour le moment.', hintSaldoAuto:'Le solde se met \u00e0 jour automatiquement lorsque vous liez des transactions.', hintTransferInfo:'Soustrait du compte source et ajoute au compte de destination. Ne compte pas comme d\u00e9pense ou revenu dans vos rapports.', hintSaldoMetaAuto:'Si vous liez un compte, son solde se met \u00e0 jour automatiquement. Si vous liez un objectif, sa progression se met \u00e0 jour aussi.', hintRecurrenteEj:'Par exemple\u00a0: Spotify, Claude Pro, loyer, salaire. G\u00e9n\u00e9r\u00e9 automatiquement \u00e0 chaque \u00e9ch\u00e9ance.', hintLimitesBase:'Les limites sont exprim\u00e9es dans votre devise principale afin de pouvoir les comparer aux d\u00e9penses dans n\u2019importe quelle devise.', hintTransferLend:'Si c\u2019est "On me doit" et que vous choisissez un compte, le montant est soustrait imm\u00e9diatement (comme si vous pr\u00eatiez l\u2019argent) puis r\u00e9ajout\u00e9 lors du r\u00e8glement.', hintDeudaSaldar:'Le r\u00e8glement enregistre la transaction correspondante.', hintAnadeCuenta:'Ajoutez un compte pour commencer \u00e0 suivre votre patrimoine dans le temps.', sinCuentas:'Aucun compte pour le moment.', hintDosCuentas:'Vous avez besoin d\u2019au moins deux comptes pour transf\u00e9rer de l\u2019argent entre eux.', hintMantenPulsada:'Maintenez une transaction pour en s\u00e9lectionner plusieurs et les supprimer ensemble.', sinDeudas:'Aucune dette enregistr\u00e9e.',
       saldo:'Solde', objetivo:'Objectif', ahorrado:'\u00c9pargn\u00e9', fechaLimite:'Date limite', categoria:'Cat\u00e9gorie', origen:'Origine', recurrenteOrigen:'R\u00e9current', transferenciaOrigen:'Virement entre comptes', limiteBaseMensual:'Limite mensuelle de base', gastadoEsteMes:'D\u00e9pens\u00e9 ce mois-ci', frecuencia:'Fr\u00e9quence', persona:'Personne', direccion:'Direction', motivo:'Motif', estado:'Statut', disponibleRemanente:'Disponible ce mois-ci (avec report)', divididoEn:'R\u00e9parti sur',
       confirmDelete:'S\u00fbr\u00b7e\u00a0? Cette action est irr\u00e9versible.', editCuenta:'Modifier le compte', editMovimiento:'Modifier la transaction', editLimite:'Modifier la limite', editMeta:'Modifier l\'objectif', editRecurrente:'Modifier le r\u00e9current', saldarDeuda:'R\u00e9gler la dette', editDeuda:'Modifier la dette', seleccionado1:'s\u00e9lectionn\u00e9', seleccionados:'s\u00e9lectionn\u00e9s', seleccionarTodas:'Tout s\u00e9lectionner', deseleccionarTodas:'Tout d\u00e9s\u00e9lectionner', eliminarSeleccionados:'Supprimer la s\u00e9lection',
-      idioma:'Langue', monedas:'Devises',  tamanoTexto:'Taille du texte', pequena:'Petite', mediana:'Moyenne', grande:'Grande', tiposDeCambio:'Taux de change',  estiloGrafico:'Style de graphique', barras:'Barres', tarta:'Camembert', sankey:'Flux', total:'Total', treemap:'Arborescence',  nombreArchivo:'Nom du fichier',
+      idioma:'Langue', monedas:'Devises',  tamanoTexto:'Taille du texte', pequena:'Petite', mediana:'Moyenne', grande:'Grande', tiposDeCambio:'Taux de change',  estiloGrafico:'Style de graphique',  cripto:'Crypto', activo:'Actif', cantidad:'Quantit\u00e9', precioActual:'Prix actuel', valorTotal:'Valeur totale', anadirActivo:'Ajouter un actif', sinTenencias:'Vous n\'avez encore ajout\u00e9 aucun actif.', cuentaVinculada:'Compte li\u00e9', actualizadoHace:'Mis \u00e0 jour il y a', errorPrecios:'Impossible de r\u00e9cup\u00e9rer les prix. V\u00e9rifiez votre connexion.', consultandoPrecios:'R\u00e9cup\u00e9ration des prix\u2026', seleccionaActivo:'S\u00e9lectionnez un actif', primeroCreaUnaCuenta:'Cr\u00e9ez d\'abord un compte dans la section Comptes.', barras:'Barres', tarta:'Camembert', sankey:'Flux', total:'Total', treemap:'Arborescence',  nombreArchivo:'Nom du fichier',
       copiarCopia:'Copier la sauvegarde', copiadoOk:'Copi\u00e9 dans le presse-papiers.', noSePudoCopiar:'Impossible de copier. Essayez d\u2019exporter le fichier.',
       sincronizacion:'Synchronisation cloud', syncDesc:'Cr\u00e9ez un compte pour que vos donn\u00e9es se synchronisent automatiquement entre votre t\u00e9l\u00e9phone, votre ordinateur et tout autre appareil o\u00f9 vous vous connectez.', email:'E-mail', contrasena:'Mot de passe', crearCuenta:'Cr\u00e9er un compte', iniciarSesion:'Se connecter', cerrarSesion:'Se d\u00e9connecter', sesionIniciadaComo:'Connect\u00e9 en tant que', sincronizando:'Synchronisation\u2026', sincronizadoOk:'Synchronis\u00e9', revisaCorreoConfirmacion:'Compte cr\u00e9\u00e9. V\u00e9rifiez votre e-mail pour le confirmer avant de vous connecter.', categoriasPersonalizadas:'Cat\u00e9gories personnalis\u00e9es', copiaSeguridad:'Sauvegarde', exportarCopia:'Exporter la sauvegarde', importarArchivo:'Importer la sauvegarde (fichier)', importarTexto:'Importer la sauvegarde (texte coll\u00e9)', borrarTodo:'Tout supprimer',
       langDesc:'La navigation, l\u2019en-t\u00eate et la recherche changent de langue. Le reste de l\u2019application continue d\u2019\u00eatre traduit progressivement.', monedaDesc:'Choisissez votre devise principale (utilis\u00e9e pour calculer tous vos rapports) et, si vous le souhaitez, une devise secondaire toujours affich\u00e9e entre parenth\u00e8ses.', monedaPrincipal:'Devise principale', monedaSecundaria:'Devise secondaire (facultative, affich\u00e9e entre parenth\u00e8ses)', ninguna:'Aucune', tiposCambioDesc:'Combien d\u2019unit\u00e9s de {BASE} \u00e9quivaut \u00e0 1 unit\u00e9 de chaque devise. N\u00e9cessaire pour toute devise utilis\u00e9e dans vos comptes ou transactions en dehors de {BASE}.', quitar:'Retirer', tipoDeCambioPlaceholder:'Taux de change', anadirMoneda:'Ajouter une devise', catPersonalizadasDesc:'Ajoutez vos propres cat\u00e9gories, en plus de celles d\u00e9j\u00e0 pr\u00e9sentes dans l\u2019application.', nuevaCategoria:'Nouvelle cat\u00e9gorie', transaccionesAntiguasAhorro:'Anciennes transactions "Ahorro"', encontreTransacSing:'J\u2019ai trouv\u00e9 1 transaction avec l\u2019ancienne cat\u00e9gorie "Ahorro". Choisissez le compte auquel elle \u00e9tait destin\u00e9e et je la convertirai en un virement r\u00e9el.', encontreTransacPlur:'J\u2019ai trouv\u00e9 {N} transactions avec l\u2019ancienne cat\u00e9gorie "Ahorro". Choisissez le compte auquel elles \u00e9taient destin\u00e9es et je les convertirai en virements r\u00e9els.', convertirTransferencias:'Convertir en virements', convertidasMsg:'{N} converties.', omitidasMsg:', {M} ignor\u00e9e(s) (pas de compte d\u2019origine ou m\u00eame compte de destination).', datosSoloNavegador:'Vos donn\u00e9es ne vivent que dans ce navigateur. Exportez une sauvegarde r\u00e9guli\u00e8rement, au cas o\u00f9.', errorFormatoArchivo:'Le fichier n\u2019a pas le format attendu d\u2019une sauvegarde Libra.', copiaImportadaOk:'Sauvegarde import\u00e9e avec succ\u00e8s.', noSePudoImportar:'Impossible d\u2019importer. V\u00e9rifiez qu\u2019il s\u2019agit bien d\u2019une sauvegarde Libra valide.', noSePudoLeer:'Impossible de lire le fichier.', pegaAquiHint:'Le s\u00e9lecteur de fichiers ne s\u2019ouvre pas (cela peut arriver dans l\u2019application mobile)\u00a0? Collez ici le contenu du fichier .json export\u00e9.', pegaAquiPlaceholder:'Collez ici le contenu du fichier...', borrarTodosDatos:'Supprimer toutes les donn\u00e9es', borrarTodosDesc:'Cela supprime les comptes, transactions, budgets, objectifs et \u00e9l\u00e9ments r\u00e9currents enregistr\u00e9s. Cette action est irr\u00e9versible.', cargandoDatos:'Chargement de vos donn\u00e9es...',
@@ -336,7 +338,7 @@
       hintSinActivos:'Nessun titolo registrato ancora.', hintSaldoAuto:'Il saldo si aggiorna automaticamente quando colleghi le transazioni.', hintTransferInfo:'Sottrae dal conto di origine e aggiunge a quello di destinazione. Non conta come spesa o entrata nei tuoi report.', hintSaldoMetaAuto:'Se colleghi un conto, il suo saldo si aggiorna automaticamente. Se colleghi un obiettivo, anche il suo progresso si aggiorna da solo.', hintRecurrenteEj:'Ad esempio: Spotify, Claude Pro, affitto, stipendio. Generato automaticamente ogni volta che \u00e8 dovuto.', hintLimitesBase:'I limiti sono espressi nella tua valuta principale per poterli confrontare con le spese in qualsiasi valuta.', hintTransferLend:'Se \u00e8 "Mi deve" e scegli un conto, l\'importo viene sottratto subito (come se prestassi i soldi) e riaggiunto quando il debito viene saldato.', hintDeudaSaldar:'Saldandolo viene registrata la transazione corrispondente.', hintAnadeCuenta:'Aggiungi un conto per iniziare a vedere il tuo patrimonio nel tempo.', sinCuentas:'Nessun conto ancora.', hintDosCuentas:'Hai bisogno di almeno due conti per trasferire denaro tra loro.', hintMantenPulsada:'Tieni premuta una transazione per selezionarne pi\u00f9 di una ed eliminarle insieme.', sinDeudas:'Nessun debito registrato.',
       saldo:'Saldo', objetivo:'Obiettivo', ahorrado:'Risparmiato', fechaLimite:'Scadenza', categoria:'Categoria', origen:'Origine', recurrenteOrigen:'Ricorrente', transferenciaOrigen:'Trasferimento tra conti', limiteBaseMensual:'Limite base mensile', gastadoEsteMes:'Speso questo mese', frecuencia:'Frequenza', persona:'Persona', direccion:'Direzione', motivo:'Motivo', estado:'Stato', disponibleRemanente:'Disponibile questo mese (con riporto)', divididoEn:'Diviso in',
       confirmDelete:'Sicuro? Non pu\u00f2 essere annullato.', editCuenta:'Modifica conto', editMovimiento:'Modifica transazione', editLimite:'Modifica limite', editMeta:'Modifica obiettivo', editRecurrente:'Modifica ricorrente', saldarDeuda:'Salda debito', editDeuda:'Modifica debito', seleccionado1:'selezionato', seleccionados:'selezionati', seleccionarTodas:'Seleziona tutte', deseleccionarTodas:'Deseleziona tutte', eliminarSeleccionados:'Elimina selezionati',
-      idioma:'Lingua', monedas:'Valute',  tamanoTexto:'Dimensione del testo', pequena:'Piccolo', mediana:'Medio', grande:'Grande', tiposDeCambio:'Tassi di cambio',  estiloGrafico:'Stile del grafico', barras:'Barre', tarta:'Torta', sankey:'Flusso', total:'Totale', treemap:'Mappa ad albero',  nombreArchivo:'Nome del file',
+      idioma:'Lingua', monedas:'Valute',  tamanoTexto:'Dimensione del testo', pequena:'Piccolo', mediana:'Medio', grande:'Grande', tiposDeCambio:'Tassi di cambio',  estiloGrafico:'Stile del grafico',  cripto:'Cripto', activo:'Asset', cantidad:'Quantit\u00e0', precioActual:'Prezzo attuale', valorTotal:'Valore totale', anadirActivo:'Aggiungi asset', sinTenencias:'Non hai ancora aggiunto nessun asset.', cuentaVinculada:'Conto collegato', actualizadoHace:'Aggiornato', errorPrecios:'Impossibile recuperare i prezzi. Controlla la tua connessione.', consultandoPrecios:'Recupero prezzi\u2026', seleccionaActivo:'Seleziona un asset', primeroCreaUnaCuenta:'Prima crea un conto nella sezione Conti.', barras:'Barre', tarta:'Torta', sankey:'Flusso', total:'Totale', treemap:'Mappa ad albero',  nombreArchivo:'Nome del file',
       copiarCopia:'Copia backup', copiadoOk:'Copiato negli appunti.', noSePudoCopiar:'Impossibile copiare. Prova a esportare il file.',
       sincronizacion:'Sincronizzazione cloud', syncDesc:'Crea un account per sincronizzare automaticamente i tuoi dati tra telefono, desktop e qualsiasi altro dispositivo su cui accedi.', email:'Email', contrasena:'Password', crearCuenta:'Crea account', iniciarSesion:'Accedi', cerrarSesion:'Esci', sesionIniciadaComo:'Accesso effettuato come', sincronizando:'Sincronizzazione\u2026', sincronizadoOk:'Sincronizzato', revisaCorreoConfirmacion:'Account creato. Controlla la tua email per confermarlo prima di accedere.', categoriasPersonalizadas:'Categorie personalizzate', copiaSeguridad:'Backup', exportarCopia:'Esporta backup', importarArchivo:'Importa backup (file)', importarTexto:'Importa backup (testo incollato)', borrarTodo:'Cancella tutto',
       langDesc:'La navigazione, l\u2019intestazione e la ricerca cambiano lingua. Il resto dell\u2019app viene tradotto gradualmente.', monedaDesc:'Scegli la tua valuta principale (usata per calcolare tutti i tuoi report) e, se vuoi, una secondaria sempre mostrata tra parentesi.', monedaPrincipal:'Valuta principale', monedaSecundaria:'Valuta secondaria (opzionale, mostrata tra parentesi)', ninguna:'Nessuna', tiposCambioDesc:'Quante unit\u00e0 di {BASE} equivalgono a 1 unit\u00e0 di ciascuna valuta. Necessario per qualsiasi valuta usata in conti o transazioni oltre a {BASE}.', quitar:'Rimuovi', tipoDeCambioPlaceholder:'Tasso di cambio', anadirMoneda:'Aggiungi valuta', catPersonalizadasDesc:'Aggiungi le tue categorie, oltre a quelle gi\u00e0 presenti nell\u2019app.', nuevaCategoria:'Nuova categoria', transaccionesAntiguasAhorro:'Vecchie transazioni "Ahorro"', encontreTransacSing:'Ho trovato 1 transazione con la vecchia categoria "Ahorro". Scegli il conto a cui era destinata e la converto in un trasferimento reale.', encontreTransacPlur:'Ho trovato {N} transazioni con la vecchia categoria "Ahorro". Scegli il conto a cui erano destinate e le converto in trasferimenti reali.', convertirTransferencias:'Converti in trasferimenti', convertidasMsg:'{N} convertite.', omitidasMsg:', {M} saltate (nessun conto originale o stesso conto di destinazione).', datosSoloNavegador:'I tuoi dati vivono solo in questo browser. Esporta un backup periodicamente, per sicurezza.', errorFormatoArchivo:'Il file non ha il formato previsto per un backup di Libra.', copiaImportadaOk:'Backup importato correttamente.', noSePudoImportar:'Impossibile importare. Verifica che sia un backup valido di Libra.', noSePudoLeer:'Impossibile leggere il file.', pegaAquiHint:'Il selettore file non si apre (a volte succede nell\u2019app mobile)? Incolla qui il contenuto del file .json esportato.', pegaAquiPlaceholder:'Incolla qui il contenuto del file...', borrarTodosDatos:'Cancella tutti i dati', borrarTodosDesc:'Questo elimina conti, transazioni, budget, obiettivi e ricorrenti salvati. Non pu\u00f2 essere annullato.', cargandoDatos:'Caricamento dei tuoi dati...',
@@ -373,6 +375,7 @@
     {id:'recurrentes', labelKey:'recurrentes'},
     {id:'metas', labelKey:'metas'},
     {id:'deudas', labelKey:'deudas'},
+    {id:'cripto', labelKey:'cripto'},
     {groupKey:'', items:[
       {id:'importar', labelKey:'importar'},
       {id:'ajustes', labelKey:'ajustes'}
@@ -381,19 +384,72 @@
   function typeLabel(type){ return { cash: t('efectivo'), savings: t('ahorro'), investment: t('inversion') }[type] || type; }
   var CATS = ['N\u00f3mina','Uber','Alquiler','Comida','Transporte','Ocio','Suscripciones','Inversi\u00f3n','Deudas','Otros'];
   function getAllCategories(){ return CATS.concat((state.data.customCategories || []).slice().sort()); }
-  var CHART_COLORS = ['#72B0AB','#BCDDDC','#FFEDD1','#FDC1B4','#FE9179','#CFB97E','#B89D47','#355E58','#053229'];
+  var CHART_COLORS = ['#72B0AB','#BCDDDC','#FFEDD1','#9BA8C4','#FE9179','#CFB97E','#B89D47','#355E58','#053229'];
+  var POPULAR_COINS = [
+    {id:'bitcoin', symbol:'BTC', name:'Bitcoin'},
+    {id:'ethereum', symbol:'ETH', name:'Ethereum'},
+    {id:'tether', symbol:'USDT', name:'Tether'},
+    {id:'binancecoin', symbol:'BNB', name:'BNB'},
+    {id:'solana', symbol:'SOL', name:'Solana'},
+    {id:'ripple', symbol:'XRP', name:'XRP'},
+    {id:'usd-coin', symbol:'USDC', name:'USD Coin'},
+    {id:'cardano', symbol:'ADA', name:'Cardano'},
+    {id:'dogecoin', symbol:'DOGE', name:'Dogecoin'},
+    {id:'tron', symbol:'TRX', name:'TRON'},
+    {id:'avalanche-2', symbol:'AVAX', name:'Avalanche'},
+    {id:'chainlink', symbol:'LINK', name:'Chainlink'},
+    {id:'polkadot', symbol:'DOT', name:'Polkadot'},
+    {id:'matic-network', symbol:'MATIC', name:'Polygon'},
+    {id:'litecoin', symbol:'LTC', name:'Litecoin'},
+    {id:'shiba-inu', symbol:'SHIB', name:'Shiba Inu'},
+    {id:'uniswap', symbol:'UNI', name:'Uniswap'},
+    {id:'stellar', symbol:'XLM', name:'Stellar'}
+  ];
+  async function fetchCryptoPrices(coinIds, vsCurrency){
+    if (!coinIds.length) return {};
+    var url = 'https://api.coingecko.com/api/v3/simple/price?ids='+coinIds.join(',')+'&vs_currencies='+vsCurrency.toLowerCase();
+    var res = await fetch(url);
+    if (!res.ok) throw new Error('CoinGecko respondi\u00f3 con error '+res.status);
+    var data = await res.json();
+    var out = {};
+    coinIds.forEach(function(id){
+      if (data[id] && typeof data[id][vsCurrency.toLowerCase()] === 'number'){
+        out[id] = data[id][vsCurrency.toLowerCase()];
+      }
+    });
+    return out;
+  }
   function categoryColor(name){
     var hash = 0;
     for (var i = 0; i < name.length; i++){ hash = (hash * 31 + name.charCodeAt(i)) | 0; }
     return CHART_COLORS[Math.abs(hash) % CHART_COLORS.length];
+  }
+  function assignDistinctColors(names){
+    var unique = [];
+    names.forEach(function(n){ if (unique.indexOf(n) === -1) unique.push(n); });
+    var used = {};
+    var result = {};
+    unique.forEach(function(name){
+      var hash = 0;
+      for (var i = 0; i < name.length; i++){ hash = (hash * 31 + name.charCodeAt(i)) | 0; }
+      var idx = Math.abs(hash) % CHART_COLORS.length;
+      var tries = 0;
+      while (used[idx] && tries < CHART_COLORS.length){
+        idx = (idx + 1) % CHART_COLORS.length;
+        tries++;
+      }
+      used[idx] = true;
+      result[name] = CHART_COLORS[idx];
+    });
+    return result;
   }
   var GOAL_COLORS = ['#8B5CF6','#6366F1','#0EA5E9','#14B8A6','#A855F7','#06B6D4'];
   var BUDGET_COLORS = ['#EC4899','#F43F5E','#D946EF','#F472B6','#FB7185','#E879F9'];
   function freqLabel(freq){ return { weekly: t('semanal'), monthly: t('mensual'), yearly: t('anualFreq') }[freq] || freq; }
 
   function defaultData(){ return { accounts: [], transactions: [], budgets: [], goals: [], recurring: [], debts: [], holdings: [], customCategories: [], dashboardOrder: ['typeBreakdown','cashflow','presupuesto','topcat','metas','recientes'], language: 'es', baseCurrency: 'AUD', secondaryCurrency: 'EUR', rates: { EUR: 1.62 }, fontSize: 'medium', chartStyleByKey: {} }; }
-  var state = { tab: 'dashboard', data: defaultData(), loading: true, importRows: null, detail: null, netWorthDays: 30, globalSearchQuery: '', cashflowView: 'month', txFormMode: 'movimiento', reportsPeriod: 3,
-    addOpen: { cuentas:false, transacciones:false, recurrentes:false, presupuesto:false, metas:false, deudas:false },
+  var state = { tab: 'dashboard', data: defaultData(), loading: true, importRows: null, detail: null, netWorthDays: 30, globalSearchQuery: '', cashflowView: 'month', txFormMode: 'movimiento', reportsPeriod: 3, cryptoPrices: {}, cryptoFetching: false, cryptoErrorMsg: null,
+    addOpen: { cuentas:false, transacciones:false, recurrentes:false, presupuesto:false, metas:false, deudas:false, cripto:false },
     txSelectMode: false, txSelected: {}, txConfirmBulkDelete: false, pendingCategoryFilter: null };
 
   function uid(){ return Date.now().toString(36) + Math.random().toString(36).slice(2,7); }
@@ -955,6 +1011,7 @@
       wrap.appendChild(el('p', {style:'font-size:12px; color:#6B7280;'}, [t('sinDatos')]));
       return wrap;
     }
+    var colorMap = assignDistinctColors(entries.map(function(e){ return e[0]; }));
     var items = entries.map(function(e){ return { e:e, area: (e[1]/total) * 10000 }; });
     var laidOut = squarify(items, 0, 0, 100, 100);
 
@@ -964,7 +1021,7 @@
     laidOut.forEach(function(it, i){
       var pct = it.e[1]/total*100;
       var area = it.w * it.h;
-      var color = categoryColor(it.e[0]);
+      var color = colorMap[it.e[0]];
       var lighter = shadeColor(color, 0.08);
       var darker = shadeColor(color, -0.12);
       var box = el('div', {class:'lb-treemap-box', style:
@@ -1004,12 +1061,13 @@
   function renderHistogram(entries, baseCurrency){
     var maxVal = Math.max.apply(null, entries.map(function(e){ return e[1]; })) || 1;
     var sum = entries.reduce(function(s,e){ return s+e[1]; }, 0) || 1;
+    var colorMap = assignDistinctColors(entries.map(function(e){ return e[0]; }));
     var wrap = el('div', {});
     var bars = [];
     entries.forEach(function(e, i){
       var pct = (e[1]/maxVal*100);
       var share = (e[1]/sum*100);
-      var color = categoryColor(e[0]);
+      var color = colorMap[e[0]];
       var lighter = shadeColor(color, 0.08);
       var darker = shadeColor(color, -0.12);
       var row = el('div', {style:'margin-bottom:'+(i===entries.length-1?'0':'16px')+'; cursor:pointer;'});
@@ -1500,6 +1558,7 @@
       return wrap;
     }
     var size = 300, cx = size/2, cy = size/2 - 6, r = 66, explode = 9, depth = 7;
+    var colorMap = assignDistinctColors(entries.map(function(e){ return e[0]; }));
     function polar(angleDeg, radius, ox, oy){
       var a = (angleDeg - 90) * Math.PI / 180;
       return [ox + radius * Math.cos(a), oy + radius * Math.sin(a)];
@@ -1519,10 +1578,10 @@
       var path = 'M'+ox+','+oy+' L'+p0[0]+','+p0[1]+' A'+r+','+r+' 0 '+largeArc+',1 '+p1[0]+','+p1[1]+' Z';
       var labelPt = polar(midAngle, r + explode + 26, cx, cy);
       var edgePt = polar(midAngle, r + explode, ox, oy);
-      return { e:e, i:i, path:path, ox:ox, oy:oy, color: categoryColor(e[0]), labelPt:labelPt, edgePt:edgePt, midAngle:midAngle, pct: e[1]/total*100 };
+      return { e:e, i:i, path:path, ox:ox, oy:oy, color: colorMap[e[0]], labelPt:labelPt, edgePt:edgePt, midAngle:midAngle, pct: e[1]/total*100 };
     });
 
-    var svg = '<svg viewBox="0 0 '+size+' '+size+'" style="width:100%; height:auto; overflow:visible; display:block;">';
+    var svg = '<svg viewBox="-100 0 '+(size+200)+' '+size+'" style="width:100%; height:auto; overflow:visible; display:block;">';
     svg += '<defs>';
     svg += '<filter id="lbPieShadow" x="-40%" y="-40%" width="180%" height="180%"><feDropShadow dx="0" dy="2" stdDeviation="2.5" flood-color="#000000" flood-opacity="0.18"/></filter>';
     slices.forEach(function(s){
@@ -2859,10 +2918,11 @@
     var totals = categoryTotals(kind, months);
     var entries = Object.keys(totals).map(function(k){ return [k, totals[k]]; }).sort(function(a,b){ return b[1]-a[1]; });
     var sum = entries.reduce(function(s,e){ return s+e[1]; }, 0);
+    var colorMap = assignDistinctColors(entries.map(function(e){ return e[0]; }));
     if (entries.length > 0){
       var style = (state.data.chartStyleByKey && state.data.chartStyleByKey[kind]) || 'histogram';
       if (style === 'doughnut'){
-        var doughnutWrap = el('div', {style:'aspect-ratio:1/1; max-width:380px; margin:0 auto;'});
+        var doughnutWrap = el('div', {style:'aspect-ratio:500/300; max-width:520px; margin:0 auto;'});
         doughnutWrap.appendChild(renderDoughnut(entries));
         card.appendChild(doughnutWrap);
       } else if (style === 'treemap'){
@@ -2882,7 +2942,7 @@
       var pct = sum > 0 ? (e[1]/sum*100) : 0;
       var row = el('div', {class:'lb-row-click', onclick: function(){ state.pendingCategoryFilter = e[0]; state.tab = 'transacciones'; render(); }});
       row.appendChild(el('div', {style:'display:flex; align-items:center; gap:8px;'}, [
-        el('span', {style:'width:10px; height:10px; border-radius:2px; background:'+categoryColor(e[0])+'; display:inline-block;'}),
+        el('span', {style:'width:10px; height:10px; border-radius:2px; background:'+colorMap[e[0]]+'; display:inline-block;'}),
         el('span', {style:'font-size:14px;'}, [e[0]])
       ]));
       row.appendChild(el('span', {}, [dualNode(e[1], null, '13px'), el('span', {class:'lb-num', style:'font-size:13px; color:#6B7280; margin-left:5px;'}, ['\u00b7 '+pct.toFixed(1)+'%'])]));
@@ -3037,6 +3097,30 @@
   }
 
   // ---- DEUDAS ----
+  async function refreshCryptoPrices(){
+    var holdings = (state.data.holdings || []).filter(function(h){ return !!h.coinId; });
+    if (!holdings.length) return;
+    var ids = [];
+    holdings.forEach(function(h){ if (ids.indexOf(h.coinId) === -1) ids.push(h.coinId); });
+    state.cryptoFetching = true;
+    state.cryptoErrorMsg = null;
+    render();
+    try {
+      var prices = await fetchCryptoPrices(ids, state.data.baseCurrency);
+      state.cryptoPrices = prices;
+      holdings.forEach(function(h){
+        if (typeof prices[h.coinId] === 'number'){
+          h.currentPrice = prices[h.coinId];
+        }
+      });
+      saveData();
+    } catch(err){
+      console.error('Error al consultar precios cripto', err);
+      state.cryptoErrorMsg = t('errorPrecios');
+    }
+    state.cryptoFetching = false;
+    render();
+  }
   function renderDeudas(container){
     var header = el('div', {class:'lb-section-header'}, [
       el('p', {class:'lb-serif', style:'font-size:18px; margin:0;'}, [t('deudas')]),
@@ -3103,6 +3187,102 @@
         ]),
         el('span', {class:'lb-num', style:'font-size:14px; color:'+(debt.settled?'#6B7280':color)+';'}, [fmt(debt.amount, debt.currency)])
       ]));
+    });
+    container.appendChild(list);
+  }
+
+  function renderCripto(container){
+    var header = el('div', {class:'lb-section-header'}, [
+      el('p', {class:'lb-serif', style:'font-size:18px; margin:0;'}, [t('cripto')]),
+      el('button', {class:'lb-add-btn', onclick: function(){ state.addOpen.cripto = !state.addOpen.cripto; render(); }}, [state.addOpen.cripto ? t('cerrar') : '+ ' + t('anadirActivo')])
+    ]);
+    container.appendChild(header);
+
+    if (state.addOpen.cripto){
+      var form = el('div', {class:'lb-card lb-add-panel', style:'margin-bottom:16px;'});
+      var grid = el('div', {style:'display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:10px; margin-bottom:10px;'});
+      var coinSelect = el('select', {class:'lb-select'}, [el('option', {value:''}, [t('seleccionaActivo')])].concat(
+        POPULAR_COINS.map(function(c){ return el('option', {value:c.id}, [c.name + ' (' + c.symbol + ')']); })
+      ));
+      var qtyInput = el('input', {class:'lb-input', type:'number', step:'any', placeholder:t('cantidad')});
+      var accSelect = el('select', {class:'lb-select'}, state.data.accounts.map(function(a){ return el('option', {value:a.id}, [a.name]); }));
+      grid.appendChild(coinSelect);
+      grid.appendChild(qtyInput);
+      if (state.data.accounts.length) grid.appendChild(accSelect);
+      form.appendChild(grid);
+      if (!state.data.accounts.length){
+        form.appendChild(el('p', {style:'font-size:12px; color:#6B7280; margin:0 0 10px;'}, [t('primeroCreaUnaCuenta')]));
+      }
+      form.appendChild(el('button', {class:'lb-btn', onclick: async function(){
+        var qty = parseFloat(qtyInput.value);
+        if (!coinSelect.value || !qty || qty <= 0 || !state.data.accounts.length) return;
+        var coin = POPULAR_COINS.find(function(c){ return c.id === coinSelect.value; });
+        var initialPrice = 0;
+        try {
+          var p = await fetchCryptoPrices([coinSelect.value], state.data.baseCurrency);
+          if (typeof p[coinSelect.value] === 'number') initialPrice = p[coinSelect.value];
+        } catch(err){ console.error('Error al consultar precio inicial', err); }
+        state.data.holdings = state.data.holdings || [];
+        state.data.holdings.push({
+          id: uid(), accountId: accSelect.value, symbol: coin.symbol, quantity: qty,
+          avgCost: initialPrice, currentPrice: initialPrice, coinId: coinSelect.value
+        });
+        state.addOpen.cripto = false;
+        render(); saveData();
+      }}, [t('guardar')]));
+      container.appendChild(form);
+    }
+
+    var holdings = (state.data.holdings || []).filter(function(h){ return !!h.coinId; });
+    var totalValue = holdings.reduce(function(s,h){ return s + (h.quantity * (h.currentPrice || 0)); }, 0);
+
+    var summaryCard = el('div', {class:'lb-card', style:'margin-bottom:16px;'});
+    summaryCard.appendChild(el('div', {style:'display:flex; align-items:center; justify-content:space-between; gap:10px;'}, [
+      el('div', {}, [
+        el('p', {style:'font-size:12px; color:#6B7280; margin:0 0 4px;'}, [t('valorTotal')]),
+        el('p', {class:'lb-num', style:'font-size:22px; font-weight:700; margin:0;'}, [fmt(totalValue, state.data.baseCurrency)])
+      ]),
+      el('button', {id:'lb-crypto-refresh-btn', class:'lb-hamburger-btn', style:'display:flex;', onclick: function(){ refreshCryptoPrices(); }}, [
+        el('div', {html: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 4v6h-6"/><path d="M1 20v-6h6"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>'})
+      ])
+    ]));
+    if (state.cryptoFetching){
+      summaryCard.appendChild(el('p', {style:'font-size:12px; color:#6B7280; margin:8px 0 0;'}, [t('consultandoPrecios')]));
+    } else if (state.cryptoErrorMsg){
+      summaryCard.appendChild(el('p', {style:'font-size:12px; color:#DC2626; margin:8px 0 0;'}, [state.cryptoErrorMsg]));
+    }
+    container.appendChild(summaryCard);
+
+    if (holdings.length === 0){
+      var emptyCard = el('div', {class:'lb-card'});
+      emptyCard.appendChild(el('p', {style:'font-size:13px; color:#6B7280;'}, [t('sinTenencias')]));
+      container.appendChild(emptyCard);
+      return;
+    }
+
+    var list = el('div', {class:'lb-card'});
+    holdings.forEach(function(h, idx){
+      var coin = POPULAR_COINS.find(function(c){ return c.id === h.coinId; }) || {name:h.symbol, symbol:h.symbol};
+      var value = h.quantity * (h.currentPrice || 0);
+      var acc = state.data.accounts.find(function(a){ return a.id === h.accountId; });
+      var row = el('div', {style:'display:flex; align-items:center; justify-content:space-between; gap:10px; padding:12px 0;' + (idx < holdings.length-1 ? ' border-bottom:1px solid #F3F4F6;' : '')});
+      var left = el('div', {}, [
+        el('p', {style:'font-size:14px; font-weight:600; margin:0;'}, [coin.name + ' (' + coin.symbol + ')']),
+        el('p', {style:'font-size:12px; color:#6B7280; margin:2px 0 0;'}, [h.quantity + ' ' + coin.symbol + (acc ? ' \u00b7 ' + acc.name : '')])
+      ]);
+      var right = el('div', {style:'text-align:right; display:flex; align-items:center; gap:10px;'}, [
+        el('div', {}, [
+          el('p', {class:'lb-num', style:'font-size:14px; font-weight:600; margin:0;'}, [fmt(value, state.data.baseCurrency)]),
+          el('p', {style:'font-size:11px; color:#9CA3AF; margin:2px 0 0;'}, [fmt(h.currentPrice||0, state.data.baseCurrency) + '/' + coin.symbol])
+        ]),
+        el('button', {class:'lb-btn-ghost lb-btn', style:'padding:5px 9px; font-size:11px;', onclick: function(){
+          state.data.holdings = state.data.holdings.filter(function(x){ return x.id !== h.id; });
+          render(); saveData();
+        }}, [t('eliminar')])
+      ]);
+      row.appendChild(left);
+      row.appendChild(right);
+      list.appendChild(row);
     });
     container.appendChild(list);
   }
@@ -3674,6 +3854,7 @@
     else if (state.tab === 'presupuesto') renderPresupuesto(wrap);
     else if (state.tab === 'metas') renderMetas(wrap);
     else if (state.tab === 'deudas') renderDeudas(wrap);
+    else if (state.tab === 'cripto') renderCripto(wrap);
     else if (state.tab === 'importar') renderImportar(wrap);
     else if (state.tab === 'ajustes') renderAjustes(wrap);
     renderModal();
