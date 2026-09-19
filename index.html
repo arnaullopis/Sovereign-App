@@ -1709,6 +1709,40 @@
     return overlay;
   }
 
+  function attachCryptoChartHover(wrapper, history, pts, geo){
+    var svgEl = wrapper.querySelector('svg');
+    var capture = wrapper.querySelector('.lb-crypto-capture');
+    var hoverLine = wrapper.querySelector('.lb-crypto-hoverline');
+    var hoverDot = wrapper.querySelector('.lb-crypto-hoverdot');
+    if (!svgEl || !capture) return;
+    var tooltip = el('div', {style:'position:absolute; display:none; pointer-events:none; background:#000000; color:#FFFFFF; padding:6px 10px; border-radius:8px; font-size:11px; white-space:nowrap; transform:translate(-50%,-115%); z-index:5; box-shadow:0 4px 10px rgba(0,0,0,0.15); transition:left .12s, top .12s;'});
+    wrapper.appendChild(tooltip);
+
+    function handleMove(clientX){
+      var rect = svgEl.getBoundingClientRect();
+      var relX = (clientX - rect.left) / rect.width * geo.W;
+      var idx = Math.round((relX - geo.padL) / geo.innerW * (history.length - 1));
+      idx = Math.max(0, Math.min(history.length - 1, idx));
+      var px = pts[idx][0], py = pts[idx][1];
+      hoverLine.setAttribute('x1', px); hoverLine.setAttribute('x2', px); hoverLine.setAttribute('opacity', '1');
+      hoverDot.setAttribute('cx', px); hoverDot.setAttribute('cy', py); hoverDot.setAttribute('opacity', '1');
+      var pxPixels = (px / geo.W) * rect.width;
+      var pyPixels = (py / geo.H) * rect.height;
+      tooltip.innerHTML = '<div style="font-weight:600;">'+fmt(history[idx].p, state.data.baseCurrency)+'</div><div style="opacity:0.7; font-size:10px;">'+new Date(history[idx].t).toLocaleDateString()+'</div>';
+      tooltip.style.left = pxPixels + 'px';
+      tooltip.style.top = pyPixels + 'px';
+      tooltip.style.display = 'block';
+    }
+    function handleLeave(){
+      hoverLine.setAttribute('opacity', '0');
+      hoverDot.setAttribute('opacity', '0');
+      tooltip.style.display = 'none';
+    }
+    capture.addEventListener('mousemove', function(e){ handleMove(e.clientX); });
+    capture.addEventListener('mouseleave', handleLeave);
+    capture.addEventListener('touchmove', function(e){ if (e.touches[0]){ handleMove(e.touches[0].clientX); e.preventDefault(); } }, {passive:false});
+    capture.addEventListener('touchend', handleLeave);
+  }
   function renderCryptoDetailModal(coinId){
     var coin = POPULAR_COINS.find(function(c){ return c.id === coinId; }) || {name:coinId, symbol:coinId};
     var history = state.cryptoHistory[coinId] || [];
@@ -1741,13 +1775,18 @@
     svg += '<text x="'+(padL-8)+'" y="'+(padT+innerH+4)+'" font-size="11" fill="#9CA3AF" text-anchor="end">'+fmt(min, state.data.baseCurrency)+'</text>';
     svg += '<path d="'+areaPath+'" fill="'+color+'" opacity="0.08"/>';
     svg += '<path d="'+linePath+'" fill="none" stroke="'+color+'" stroke-width="2" stroke-linejoin="round"/>';
+    svg += '<line class="lb-crypto-hoverline" x1="0" y1="'+padT+'" x2="0" y2="'+(padT+innerH)+'" stroke="'+color+'" stroke-width="1" stroke-dasharray="3,3" opacity="0" style="transition:x1 .12s, x2 .12s, opacity .12s;"/>';
+    svg += '<circle class="lb-crypto-hoverdot" cx="0" cy="0" r="4.5" fill="'+color+'" stroke="#FFFFFF" stroke-width="2" opacity="0" style="transition:cx .12s, cy .12s, opacity .12s;"/>';
+    svg += '<rect class="lb-crypto-capture" x="'+padL+'" y="0" width="'+innerW+'" height="'+H+'" fill="transparent" style="cursor:crosshair;"/>';
     svg += '<text x="'+padL+'" y="'+(H-6)+'" font-size="10" fill="#9CA3AF" text-anchor="start">'+startDate+'</text>';
     svg += '<text x="'+(padL+innerW)+'" y="'+(H-6)+'" font-size="10" fill="#9CA3AF" text-anchor="end">'+endDate+'</text>';
     svg += '</svg>';
 
     body.push(el('p', {class:'lb-num', style:'font-size:24px; font-weight:700; margin:0 0 4px;'}, [fmt(prices[prices.length-1], state.data.baseCurrency)]));
     body.push(el('p', {style:'font-size:12px; color:'+color+'; margin:0 0 14px;'}, [(trendUp?'+':'')+((prices[prices.length-1]-prices[0])/prices[0]*100).toFixed(1)+'% \u00b7 ' + t('ultimos30dias')]));
-    body.push(el('div', {html: svg}));
+    var chartWrap = el('div', {style:'position:relative;', html: svg});
+    attachCryptoChartHover(chartWrap, history, pts, {padL:padL, innerW:innerW, W:W, H:H});
+    body.push(chartWrap);
     return modalShell(coin.name + ' (' + coin.symbol + ')', body);
   }
   function deleteConfirmRow(onConfirm){
