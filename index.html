@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
 <title>Sovereign</title>
 <meta name="description" content="Tu patrimonio, en dos monedas">
-<meta name="theme-color" content="#FF6600">
+<meta name="theme-color" content="#FFFFFF">
 <link rel="manifest" href="manifest.json">
 <link rel="icon" href="icon-192.png">
 <link rel="apple-touch-icon" href="icon-192.png">
@@ -57,6 +57,27 @@
   #lb-toast-root { position: fixed; top: 16px; left: 50%; transform: translateX(-50%); z-index: 3000; display: flex; flex-direction: column; gap: 8px; align-items: center; pointer-events: none; }
   .lb-toast { pointer-events: auto; background: #1F2937; color: #FFFFFF; padding: 12px 18px; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.25); display: flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 600; animation: lbSlideDown .25s cubic-bezier(.22,.9,.34,1); max-width: 90vw; transition: background .15s, transform .15s; }
   .lb-toast:hover { background: #374151; transform: translateY(1px); }
+  #lb-lock-root:empty { display: none; }
+  .lb-lock-screen { position: fixed; inset: 0; background: var(--lb-bg); z-index: 5000; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 24px; }
+  .lb-lock-dots { display: flex; gap: 14px; margin: 20px 0 28px; }
+  .lb-lock-dot { width: 14px; height: 14px; border-radius: 50%; border: 2px solid var(--lb-border-strong); transition: background .1s, border-color .1s; }
+  .lb-lock-dot.filled { background: var(--lb-text); border-color: var(--lb-text); }
+  .lb-lock-dot.error { background: #DC2626; border-color: #DC2626; }
+  @keyframes lbShake { 10%, 90% { transform: translateX(-2px); } 20%, 80% { transform: translateX(4px); } 30%, 50%, 70% { transform: translateX(-8px); } 40%, 60% { transform: translateX(8px); } }
+  .lb-lock-shake { animation: lbShake .5s; }
+  .lb-lock-keypad { display: grid; grid-template-columns: repeat(3, 68px); gap: 14px; }
+  .lb-lock-key { width: 68px; height: 68px; border-radius: 50%; border: 1px solid var(--lb-border); background: var(--lb-card-bg); font-size: 24px; font-weight: 600; color: var(--lb-text); cursor: pointer; display: flex; align-items: center; justify-content: center; }
+  .lb-lock-key:active { background: var(--lb-bg-alt); }
+  .lb-lock-key.lb-lock-key-ghost { background: none; border: none; box-shadow: none; }
+  #lb-onboarding-root:empty { display: none; }
+  .lb-onboarding-screen { position: fixed; inset: 0; background: var(--lb-bg); z-index: 4000; display: flex; align-items: center; justify-content: center; padding: 24px; overflow-y: auto; }
+  .lb-onboarding-card { max-width: 420px; width: 100%; text-align: center; }
+  .lb-tutorial-dots { display: flex; gap: 6px; justify-content: center; margin: 18px 0; }
+  .lb-tutorial-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--lb-border-strong); transition: background .15s, width .15s; }
+  .lb-tutorial-dot.active { background: #FF6600; width: 20px; border-radius: 4px; }
+  .lb-discover-icon { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 50%; background: rgba(255,102,0,0.12); border: none; color: #FF6600; cursor: pointer; margin-left: 8px; vertical-align: middle; padding: 0; animation: lbDiscoverPulse 1.8s ease-in-out infinite; }
+  @keyframes lbDiscoverPulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(255,102,0,0.35); } 50% { box-shadow: 0 0 0 5px rgba(255,102,0,0); } }
+  .lb-discover-popover { position: absolute; z-index: 200; background: var(--lb-card-bg); border: 1px solid var(--lb-border); border-radius: 12px; padding: 14px 16px; max-width: 300px; box-shadow: 0 10px 25px rgba(0,0,0,0.15); animation: lbFadeIn .15s ease; }
   .lb-toast-close { background: none; border: none; color: rgba(255,255,255,0.6); cursor: pointer; padding: 2px; margin-left: 4px; }
   .lb-toast-close:hover { color: #FFFFFF; }
   #libra-app { font-family: 'OnePlus Sans', 'OnePlus Slate', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; color: var(--lb-text); background: var(--lb-bg); width: 100%; margin: 0 auto; padding-top: 16px; padding-left: 24px; padding-right: 24px; position: relative; transition: background .2s, color .2s; }
@@ -79,6 +100,9 @@
     .lb-hamburger-btn { display: flex; }
     #lb-scale { display: none; }
     #lb-hero-totals { margin-bottom: 14px; }
+    .lb-patrimonio-strip-card { padding: 10px 12px !important; }
+    .lb-patrimonio-strip-card .lb-num { font-size: 15px !important; }
+    .lb-patrimonio-strip-card .lb-num + .lb-num { display: block; margin-left: 0 !important; }
     #lb-nav { display: block; position: fixed; top: 0; right: 0; bottom: 0; width: 78%; max-width: 300px; background: var(--lb-bg); z-index: 2001; padding: 18px 16px; overflow-y: auto; box-shadow: -8px 0 24px rgba(17,24,39,0.15); transform: translateX(100%); transition: transform .28s cubic-bezier(.22,.9,.34,1); pointer-events: none; visibility: hidden; }
     #lb-nav.lb-nav-open { transform: translateX(0); pointer-events: auto; visibility: visible; }
     .lb-nav-backdrop { display: block; position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 2000; opacity: 0; pointer-events: none; transition: opacity .28s ease; }
@@ -189,12 +213,14 @@
   .lb-toggle-btn.active:hover { background: #E65C00; }
   .lb-toggle-btn:active { transform: scale(0.96); }
   .lb-add-panel { animation: lbSlideDown .18s ease; transform-origin: top; }
-  .lb-add-panel input, .lb-add-panel select { background: var(--lb-bg-alt); border: 1px solid transparent; box-shadow: none; }
+  .lb-add-panel input, .lb-add-panel select { background: var(--lb-card-bg); border: 1px solid var(--lb-border-strong); box-shadow: 0 1px 2px var(--lb-shadow-1); }
   .lb-add-panel input::placeholder { color: var(--lb-text-faint); }
   .lb-add-panel input:focus, .lb-add-panel select:focus { outline: none; background: var(--lb-card-bg); border-color: #FF6600; box-shadow: 0 0 0 2px rgba(255,102,0,0.15); }
 </style>
 <div id="libra-app">
-  <div class="lb-layout">
+  <div id="lb-lock-root"></div>
+  <div id="lb-onboarding-root"></div>
+  <div class="lb-layout" id="lb-main-layout">
     <aside class="lb-sidebar">
       <div id="lb-logo-home" style="display:flex; align-items:center; justify-content:space-between; margin-bottom:14px;">
         <div id="lb-logo-click" style="display:flex; align-items:center; gap:9px; cursor:pointer;" onclick="libraGoDashboard();">
@@ -203,10 +229,10 @@
         </div>
         <div style="display:flex; align-items:center; gap:6px;">
           <button id="lb-refresh-btn" class="lb-hamburger-btn" style="display:flex;" aria-label="Refrescar" onclick="libraRefresh();">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 4v6h-6"/><path d="M1 20v-6h6"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--lb-text)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 4v6h-6"/><path d="M1 20v-6h6"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
           </button>
           <button id="lb-hamburger" class="lb-hamburger-btn" aria-label="Men\u00fa" onclick="document.getElementById('lb-nav').classList.add('lb-nav-open'); document.getElementById('lb-nav-backdrop').classList.add('lb-nav-open');">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--lb-text)" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
           </button>
         </div>
       </div>
@@ -276,7 +302,7 @@
       sinCuentaAsoc:'Sin cuenta asociada', sinMetaAsoc:'Sin meta asociada', todasCategorias:'Todas las categor\u00edas', todasLasCuentas:'Todas las cuentas', buscar:'Buscar...',
       movimiento:'Movimiento', transferencia:'Transferencia', esteMs:'Este mes', tendencia:'Tendencia',
       ingresosTotales:'Ingresos totales', gastosTotales:'Gastos totales', ingresoNeto:'Ingreso neto', tasaAhorro:'Tasa de ahorro', vsMesAnterior:'vs mes anterior',
-      pendiente:'Pendiente', saldada:'Saldada', meDebe:'Me debe', leDebo:'Le debo', marcarSaldada:'Marcar como saldada', revertirSaldado:'Revertir saldado', recordatorioDeudasTitulo:'Recordatorio de deudas', recordatorioDeudasDesc:'Recibe un aviso al abrir la app si tienes deudas pendientes.', desactivado:'Desactivado', semanal:'Semanal', mensual:'Mensual', recordatorioDeudas:'Tienes {N} deudas pendientes', errorCuentaRequerida:'Elige una cuenta de destino para este movimiento.',
+      pendiente:'Pendiente', saldada:'Saldada', meDebe:'Me debe', leDebo:'Le debo', marcarSaldada:'Marcar como saldada', revertirSaldado:'Revertir saldado', recordatorioDeudasTitulo:'Recordatorio de deudas', recordatorioDeudasDesc:'Recibe un aviso al abrir la app si tienes deudas pendientes.', desactivado:'Desactivado', semanal:'Semanal', mensual:'Mensual', recordatorioDeudas:'Tienes {N} deudas pendientes', bloqueoApp:'Bloqueo de la app', bloqueoAppDesc:'Pide un PIN (o huella) para abrir la app.', bienvenidoTitulo:'Bienvenido a Sovereign', bienvenidoDesc:'Empecemos creando tu primera cuenta — puede ser tu efectivo, una cuenta de ahorro o de inversión.', nombreCuentaEj:'Nombre (ej. Commbank ahorro)', saldoActual:'Saldo actual', crearYEmpezar:'Crear cuenta y empezar', saltarPorAhora:'Saltar por ahora', tutDashTitulo:'Tu panorama general', tutDashDesc:'Aquí ves todo de un vistazo: patrimonio, gastos, metas... Cada bloque se puede plegar, cambiar de tamaño y reordenar a tu gusto.', tutTxTitulo:'Registra tus movimientos', tutTxDesc:'Añade ingresos y gastos, vínculalos a una cuenta o meta, y el saldo se actualiza solo.', tutCashTitulo:'Entiende tus números', tutCashDesc:'Compara ingresos y gastos mes a mes, o mira la tendencia de los últimos 6 meses.', tutMetasTitulo:'Ponte objetivos', tutMetasDesc:'Crea metas de ahorro y víncula transacciones — el progreso sube solo hasta completarlas.', tutCriptoTitulo:'Sigue tus inversiones', tutCriptoDesc:'Añade tus criptomonedas y consulta su precio en tiempo real, con gráficos históricos.', tutAjustesTitulo:'Hazla tuya', tutAjustesDesc:'Cambia el idioma, la moneda, el modo oscuro, o activa un PIN para proteger tus datos.', anterior:'Anterior', siguiente:'Siguiente', empezar:'Empezar', saltarTutorial:'Saltar el tutorial', ayudaCuentasTitulo:'Tus cuentas', ayudaCuentasDesc:'Añade cuentas de efectivo, ahorro o inversión en distintas monedas. Toca una para ver o editar sus detalles.', ayudaGastosTitulo:'Tus gastos por categoría', ayudaGastosDesc:'Consulta en qué se va tu dinero, con gráficos que puedes cambiar entre barras, tarta o mapa de árbol.', ayudaIngresosTitulo:'Tus ingresos por categoría', ayudaIngresosDesc:'Igual que Gastos, pero para tus fuentes de ingreso.', ayudaPresupuestoTitulo:'Controla tu gasto mensual', ayudaPresupuestoDesc:'Pon un límite a cada categoría y ve cuánto llevas gastado este mes.', ayudaRecurrentesTitulo:'Automatiza lo habitual', ayudaRecurrentesDesc:'Suscripciones, nómina, alquiler... Se generan solas en la fecha que elijas, cada mes, semana o año.', ayudaDeudasTitulo:'Quién te debe y a quién debes', ayudaDeudasDesc:'Registra deudas pendientes y márcalas como saldadas cuando se resuelvan — se puede revertir si te equivocas.', ayudaImportarTitulo:'Trae tus datos de otro sitio', ayudaImportarDesc:'Dos formas: sube un CSV y asigna qué columna es la fecha, el importe, etc. — o sube un extracto en PDF y la app detecta los movimientos sola, para que solo tengas que revisarlos y corregir lo que haga falta antes de confirmar.', descubrir:'Descubre esta sección', introducePin:'Introduce tu PIN', pinIncorrecto:'PIN incorrecto', introduceActual:'Introduce tu PIN actual para desactivarlo', confirmaPin:'Confirma tu PIN', creaPin:'Crea un PIN de 4 dígitos', pinDebeSer4:'El PIN debe tener 4 dígitos', pinNoCoincide:'Los PIN no coinciden', continuar:'Continuar', activado:'Activado', activarBiometria:'Activar desbloqueo biométrico', desactivarBiometria:'Desactivar biometría', errorCuentaRequerida:'Elige una cuenta de destino para este movimiento.', diaDelMes:'Día del mes',
       completada:'Completada', archivada:'Archivada', archivar:'Archivar', reactivar:'Reactivar', diasRestantes:'d\u00edas restantes', plazoVencido:'plazo vencido',
       semanal:'Semanal', mensual:'Mensual', anualFreq:'Anual', pausar:'Pausar', reanudar:'Reanudar', activo:'Activo', pausado:'Pausado' },
     en: { tagline:'your wealth, in two currencies', buscarTodo:'Search everything...', patrimonioTotal:'Total net worth',
@@ -305,7 +331,7 @@
       sinCuentaAsoc:'No linked account', sinMetaAsoc:'No linked goal', todasCategorias:'All categories', todasLasCuentas:'All accounts', buscar:'Search...',
       movimiento:'Transaction', transferencia:'Transfer', esteMs:'This month', tendencia:'Trend',
       ingresosTotales:'Total income', gastosTotales:'Total expenses', ingresoNeto:'Net income', tasaAhorro:'Savings rate', vsMesAnterior:'vs last month',
-      pendiente:'Pending', saldada:'Settled', meDebe:'Owed to me', leDebo:'I owe', marcarSaldada:'Mark as settled', revertirSaldado:'Revert settlement', recordatorioDeudasTitulo:'Debt reminder', recordatorioDeudasDesc:'Get a reminder when you open the app if you have pending debts.', desactivado:'Off', semanal:'Weekly', mensual:'Monthly', recordatorioDeudas:'You have {N} pending debts', errorCuentaRequerida:'Choose a destination account for this transaction.',
+      pendiente:'Pending', saldada:'Settled', meDebe:'Owed to me', leDebo:'I owe', marcarSaldada:'Mark as settled', revertirSaldado:'Revert settlement', recordatorioDeudasTitulo:'Debt reminder', recordatorioDeudasDesc:'Get a reminder when you open the app if you have pending debts.', desactivado:'Off', semanal:'Weekly', mensual:'Monthly', recordatorioDeudas:'You have {N} pending debts', bloqueoApp:'App lock', bloqueoAppDesc:'Require a PIN (or fingerprint) to open the app.', bienvenidoTitulo:'Welcome to Sovereign', bienvenidoDesc:'Let\'s start by creating your first account — it could be cash, a savings account, or an investment account.', nombreCuentaEj:'Name (e.g. Commbank savings)', saldoActual:'Current balance', crearYEmpezar:'Create account and start', saltarPorAhora:'Skip for now', tutDashTitulo:'Your overview', tutDashDesc:'See everything at a glance here: net worth, spending, goals... Every widget can be collapsed, resized and reordered however you like.', tutTxTitulo:'Log your transactions', tutTxDesc:'Add income and expenses, link them to an account or goal, and the balance updates itself.', tutCashTitulo:'Understand your numbers', tutCashDesc:'Compare income and expenses month by month, or check the trend over the last 6 months.', tutMetasTitulo:'Set goals', tutMetasDesc:'Create savings goals and link transactions to them — progress fills in on its own until complete.', tutCriptoTitulo:'Track your investments', tutCriptoDesc:'Add your crypto and check its real-time price, with historical charts.', tutAjustesTitulo:'Make it yours', tutAjustesDesc:'Change the language, currency, dark mode, or turn on a PIN to protect your data.', anterior:'Back', siguiente:'Next', empezar:'Get started', saltarTutorial:'Skip tutorial', ayudaCuentasTitulo:'Your accounts', ayudaCuentasDesc:'Add cash, savings or investment accounts in different currencies. Tap one to view or edit its details.', ayudaGastosTitulo:'Your spending by category', ayudaGastosDesc:'See where your money goes, with charts you can switch between bars, pie or treemap.', ayudaIngresosTitulo:'Your income by category', ayudaIngresosDesc:'Same as Expenses, but for your income sources.', ayudaPresupuestoTitulo:'Keep monthly spending in check', ayudaPresupuestoDesc:'Set a limit per category and see how much you\'ve spent this month.', ayudaRecurrentesTitulo:'Automate the regulars', ayudaRecurrentesDesc:'Subscriptions, payroll, rent... They\'re generated on their own on the date you choose — monthly, weekly or yearly.', ayudaDeudasTitulo:'Who owes you and who you owe', ayudaDeudasDesc:'Log pending debts and mark them settled once resolved — you can revert it if you made a mistake.', ayudaImportarTitulo:'Bring your data from elsewhere', ayudaImportarDesc:'Two ways: upload a CSV and pick which column is the date, amount, etc. — or upload a PDF statement and the app detects the transactions on its own, so you just review and fix anything needed before confirming.', descubrir:'Discover this section', introducePin:'Enter your PIN', pinIncorrecto:'Incorrect PIN', introduceActual:'Enter your current PIN to turn it off', confirmaPin:'Confirm your PIN', creaPin:'Create a 4-digit PIN', pinDebeSer4:'PIN must be 4 digits', pinNoCoincide:'PINs do not match', continuar:'Continue', activado:'On', activarBiometria:'Enable biometric unlock', desactivarBiometria:'Disable biometrics', errorCuentaRequerida:'Choose a destination account for this transaction.', diaDelMes:'Day of month',
       completada:'Completed', archivada:'Archived', archivar:'Archive', reactivar:'Reactivate', diasRestantes:'days left', plazoVencido:'overdue',
       semanal:'Weekly', mensual:'Monthly', anualFreq:'Yearly', pausar:'Pause', reanudar:'Resume', activo:'Active', pausado:'Paused' },
     ca: { tagline:'el teu patrimoni, en dues monedes', buscarTodo:'Cerca-ho tot...', patrimonioTotal:'Patrimoni total',
@@ -334,7 +360,7 @@
       sinCuentaAsoc:'Sense compte associat', sinMetaAsoc:'Sense objectiu associat', todasCategorias:'Totes les categories', todasLasCuentas:'Tots els comptes', buscar:'Cerca...',
       movimiento:'Moviment', transferencia:'Transfer\u00e8ncia', esteMs:'Aquest mes', tendencia:'Tend\u00e8ncia',
       ingresosTotales:'Ingressos totals', gastosTotales:'Despeses totals', ingresoNeto:'Ingr\u00e9s net', tasaAhorro:'Taxa d\'estalvi', vsMesAnterior:'vs mes anterior',
-      pendiente:'Pendent', saldada:'Saldada', meDebe:'Em deu', leDebo:'Li dec', marcarSaldada:'Marcar com a saldada', revertirSaldado:'Revertir saldat', recordatorioDeudasTitulo:'Recordàtoire de deutes', recordatorioDeudasDesc:'Rep un avís en obrir l\'app si tens deutes pendents.', desactivado:'Desactivat', semanal:'Setmanal', mensual:'Mensual', recordatorioDeudas:'Tens {N} deutes pendents', errorCuentaRequerida:'Tria un compte de destí per a aquest moviment.',
+      pendiente:'Pendent', saldada:'Saldada', meDebe:'Em deu', leDebo:'Li dec', marcarSaldada:'Marcar com a saldada', revertirSaldado:'Revertir saldat', recordatorioDeudasTitulo:'Recordàtoire de deutes', recordatorioDeudasDesc:'Rep un avís en obrir l\'app si tens deutes pendents.', desactivado:'Desactivat', semanal:'Setmanal', mensual:'Mensual', recordatorioDeudas:'Tens {N} deutes pendents', bloqueoApp:'Bloqueig de l\'app', bloqueoAppDesc:'Demana un PIN (o empremta) per obrir l\'app.', bienvenidoTitulo:'Benvingut a Sovereign', bienvenidoDesc:'Comencem creant el teu primer compte — pot ser efectiu, un compte d\'estalvi o d\'inversió.', nombreCuentaEj:'Nom (ex. Commbank estalvi)', saldoActual:'Saldo actual', crearYEmpezar:'Crea el compte i comença', saltarPorAhora:'Salta-ho ara', tutDashTitulo:'El teu panorama general', tutDashDesc:'Aquí veus tot d\'un cop d\'ull: patrimoni, despeses, metes... Cada bloc es pot plegar, canviar de mida i reordenar al teu gust.', tutTxTitulo:'Registra els teus moviments', tutTxDesc:'Afegeix ingressos i despeses, vincula\'ls a un compte o meta, i el saldo s\'actualitza sol.', tutCashTitulo:'Entén els teus números', tutCashDesc:'Compara ingressos i despeses mes a mes, o mira la tendència dels darrers 6 mesos.', tutMetasTitulo:'Posa\'t objectius', tutMetasDesc:'Crea metes d\'estalvi i vincula transaccions — el progrés puja sol fins completar-les.', tutCriptoTitulo:'Segueix les teves inversions', tutCriptoDesc:'Afegeix les teves criptomonedes i consulta el seu preu en temps real, amb gràfics històrics.', tutAjustesTitulo:'Fes-la teva', tutAjustesDesc:'Canvia l\'idioma, la moneda, el mode fosc, o activa un PIN per protegir les teves dades.', anterior:'Enrere', siguiente:'Següent', empezar:'Començar', saltarTutorial:'Salta el tutorial', ayudaCuentasTitulo:'Els teus comptes', ayudaCuentasDesc:'Afegeix comptes d\'efectiu, estalvi o inversió en diferents monedes. Toca\'n un per veure o editar els seus detalls.', ayudaGastosTitulo:'Les teves despeses per categoria', ayudaGastosDesc:'Consulta on va el teu diner, amb gràfics que pots canviar entre barres, tarta o mapa d\'arbre.', ayudaIngresosTitulo:'Els teus ingressos per categoria', ayudaIngresosDesc:'Igual que Despeses, però per a les teves fonts d\'ingrés.', ayudaPresupuestoTitulo:'Controla la teva despesa mensual', ayudaPresupuestoDesc:'Posa un límit a cada categoria i veu quant portes gastat aquest mes.', ayudaRecurrentesTitulo:'Automatitza l\'habitual', ayudaRecurrentesDesc:'Subscripcions, nòmina, lloguer... Es generen soles en la data que triis, cada mes, setmana o any.', ayudaDeudasTitulo:'Qui et deu i a qui deus', ayudaDeudasDesc:'Registra deutes pendents i marca\'ls com a saldats quan es resolguin — es pot revertir si t\'equivoques.', ayudaImportarTitulo:'Porta les teves dades d\'un altre lloc', ayudaImportarDesc:'Dues maneres: puja un CSV i assigna quina columna és la data, l\'import, etc. — o puja un extracte en PDF i l\'app detecta els moviments sola, només cal que els revisis i corregeixis el que calgui abans de confirmar.', descubrir:'Descobreix aquesta secció', introducePin:'Introdueix el teu PIN', pinIncorrecto:'PIN incorrecte', introduceActual:'Introdueix el teu PIN actual per desactivar-lo', confirmaPin:'Confirma el teu PIN', creaPin:'Crea un PIN de 4 dígits', pinDebeSer4:'El PIN ha de tenir 4 dígits', pinNoCoincide:'Els PIN no coincideixen', continuar:'Continua', activado:'Activat', activarBiometria:'Activa el desbloqueig biomètric', desactivarBiometria:'Desactiva la biometria', errorCuentaRequerida:'Tria un compte de destí per a aquest moviment.', diaDelMes:'Dia del mes',
       completada:'Completada', archivada:'Arxivada', archivar:'Arxivar', reactivar:'Reactivar', diasRestantes:'dies restants', plazoVencido:'termini ven\u00e7ut',
       semanal:'Setmanal', mensual:'Mensual', anualFreq:'Anual', pausar:'Pausar', reanudar:'Reprendre', activo:'Actiu', pausado:'Pausat' },
     fr: { tagline:'votre patrimoine, en deux devises', buscarTodo:'Rechercher partout...', patrimonioTotal:'Patrimoine total',
@@ -363,7 +389,7 @@
       sinCuentaAsoc:'Aucun compte associ\u00e9', sinMetaAsoc:'Aucun objectif associ\u00e9', todasCategorias:'Toutes les cat\u00e9gories', todasLasCuentas:'Tous les comptes', buscar:'Rechercher...',
       movimiento:'Transaction', transferencia:'Virement', esteMs:'Ce mois-ci', tendencia:'Tendance',
       ingresosTotales:'Revenus totaux', gastosTotales:'D\u00e9penses totales', ingresoNeto:'Revenu net', tasaAhorro:'Taux d\'\u00e9pargne', vsMesAnterior:'vs mois pr\u00e9c\u00e9dent',
-      pendiente:'En attente', saldada:'R\u00e9gl\u00e9e', meDebe:'On me doit', leDebo:'Je dois', marcarSaldada:'Marquer comme r\u00e9gl\u00e9e', revertirSaldado:'Annuler le r\u00e8glement', recordatorioDeudasTitulo:'Rappel de dettes', recordatorioDeudasDesc:'Recevez un rappel \u00e0 l\'ouverture de l\'app si vous avez des dettes en attente.', desactivado:'D\u00e9sactiv\u00e9', semanal:'Hebdomadaire', mensual:'Mensuel', recordatorioDeudas:'Vous avez {N} dettes en attente', errorCuentaRequerida:'Choisissez un compte de destination pour cette transaction.',
+      pendiente:'En attente', saldada:'R\u00e9gl\u00e9e', meDebe:'On me doit', leDebo:'Je dois', marcarSaldada:'Marquer comme r\u00e9gl\u00e9e', revertirSaldado:'Annuler le r\u00e8glement', recordatorioDeudasTitulo:'Rappel de dettes', recordatorioDeudasDesc:'Recevez un rappel \u00e0 l\'ouverture de l\'app si vous avez des dettes en attente.', desactivado:'D\u00e9sactiv\u00e9', semanal:'Hebdomadaire', mensual:'Mensuel', recordatorioDeudas:'Vous avez {N} dettes en attente', bloqueoApp:'Verrouillage de l\'app', bloqueoAppDesc:'Demander un code PIN (ou une empreinte) pour ouvrir l\'app.', bienvenidoTitulo:'Bienvenue sur Sovereign', bienvenidoDesc:'Commen\u00e7ons par cr\u00e9er votre premier compte \u2014 esp\u00e8ces, \u00e9pargne ou investissement.', nombreCuentaEj:'Nom (ex. \u00e9pargne Commbank)', saldoActual:'Solde actuel', crearYEmpezar:'Cr\u00e9er le compte et commencer', saltarPorAhora:'Passer pour l\'instant', tutDashTitulo:'Votre vue d\'ensemble', tutDashDesc:'Voyez tout en un coup d\'\u0153il\u00a0: patrimoine, d\u00e9penses, objectifs\u2026 Chaque widget peut \u00eatre r\u00e9duit, redimensionn\u00e9 et r\u00e9organis\u00e9 \u00e0 votre guise.', tutTxTitulo:'Enregistrez vos mouvements', tutTxDesc:'Ajoutez des revenus et des d\u00e9penses, liez-les \u00e0 un compte ou un objectif, et le solde se met \u00e0 jour tout seul.', tutCashTitulo:'Comprenez vos chiffres', tutCashDesc:'Comparez revenus et d\u00e9penses mois par mois, ou observez la tendance des 6 derniers mois.', tutMetasTitulo:'Fixez-vous des objectifs', tutMetasDesc:'Cr\u00e9ez des objectifs d\'\u00e9pargne et liez-y des transactions \u2014 la progression avance seule jusqu\'\u00e0 leur ach\u00e8vement.', tutCriptoTitulo:'Suivez vos investissements', tutCriptoDesc:'Ajoutez vos cryptomonnaies et consultez leur prix en temps r\u00e9el, avec des graphiques historiques.', tutAjustesTitulo:'Personnalisez-la', tutAjustesDesc:'Changez la langue, la devise, le mode sombre, ou activez un code PIN pour prot\u00e9ger vos donn\u00e9es.', anterior:'Pr\u00e9c\u00e9dent', siguiente:'Suivant', empezar:'Commencer', saltarTutorial:'Passer le tutoriel', ayudaCuentasTitulo:'Vos comptes', ayudaCuentasDesc:'Ajoutez des comptes en esp\u00e8ces, \u00e9pargne ou investissement dans diff\u00e9rentes devises. Touchez-en un pour voir ou modifier ses d\u00e9tails.', ayudaGastosTitulo:'Vos d\u00e9penses par cat\u00e9gorie', ayudaGastosDesc:'Voyez o\u00f9 va votre argent, avec des graphiques \u00e0 basculer entre barres, camembert ou mosa\u00efque.', ayudaIngresosTitulo:'Vos revenus par cat\u00e9gorie', ayudaIngresosDesc:'Comme D\u00e9penses, mais pour vos sources de revenus.', ayudaPresupuestoTitulo:'Ma\u00eetrisez vos d\u00e9penses mensuelles', ayudaPresupuestoDesc:'Fixez une limite par cat\u00e9gorie et suivez ce que vous avez d\u00e9pens\u00e9 ce mois-ci.', ayudaRecurrentesTitulo:'Automatisez le r\u00e9current', ayudaRecurrentesDesc:'Abonnements, salaire, loyer\u2026 Ils se g\u00e9n\u00e8rent seuls \u00e0 la date choisie, chaque mois, semaine ou ann\u00e9e.', ayudaDeudasTitulo:'Qui vous doit et \u00e0 qui vous devez', ayudaDeudasDesc:'Enregistrez les dettes en attente et marquez-les r\u00e9gl\u00e9es une fois r\u00e9solues \u2014 annulable en cas d\'erreur.', ayudaImportarTitulo:'Importez vos donn\u00e9es d\'ailleurs', ayudaImportarDesc:'Deux fa\u00e7ons\u00a0: importez un CSV et indiquez quelle colonne est la date, le montant, etc. \u2014 ou importez un relev\u00e9 en PDF, l\'app d\u00e9tecte les mouvements toute seule, il ne reste qu\'\u00e0 v\u00e9rifier et corriger avant de confirmer.', descubrir:'D\u00e9couvrir cette section', introducePin:'Entrez votre code PIN', pinIncorrecto:'Code PIN incorrect', introduceActual:'Entrez votre code PIN actuel pour le d\u00e9sactiver', confirmaPin:'Confirmez votre code PIN', creaPin:'Cr\u00e9ez un code PIN \u00e0 4 chiffres', pinDebeSer4:'Le code PIN doit comporter 4 chiffres', pinNoCoincide:'Les codes PIN ne correspondent pas', continuar:'Continuer', activado:'Activ\u00e9', activarBiometria:'Activer le d\u00e9verrouillage biom\u00e9trique', desactivarBiometria:'D\u00e9sactiver la biom\u00e9trie', errorCuentaRequerida:'Choisissez un compte de destination pour cette transaction.', diaDelMes:'Jour du mois',
       completada:'Termin\u00e9', archivada:'Archiv\u00e9', archivar:'Archiver', reactivar:'R\u00e9activer', diasRestantes:'jours restants', plazoVencido:'\u00e9ch\u00e9ance d\u00e9pass\u00e9e',
       semanal:'Hebdomadaire', mensual:'Mensuel', anualFreq:'Annuel', pausar:'Suspendre', reanudar:'Reprendre', activo:'Actif', pausado:'Suspendu' },
     it: { tagline:'il tuo patrimonio, in due valute', buscarTodo:'Cerca ovunque...', patrimonioTotal:'Patrimonio totale',
@@ -392,7 +418,7 @@
       sinCuentaAsoc:'Nessun conto associato', sinMetaAsoc:'Nessun obiettivo associato', todasCategorias:'Tutte le categorie', todasLasCuentas:'Tutti i conti', buscar:'Cerca...',
       movimiento:'Transazione', transferencia:'Trasferimento', esteMs:'Questo mese', tendencia:'Tendenza',
       ingresosTotales:'Entrate totali', gastosTotales:'Spese totali', ingresoNeto:'Reddito netto', tasaAhorro:'Tasso di risparmio', vsMesAnterior:'vs mese precedente',
-      pendiente:'In sospeso', saldada:'Saldato', meDebe:'Mi deve', leDebo:'Devo', marcarSaldada:'Segna come saldato', revertirSaldado:'Annulla saldo', recordatorioDeudasTitulo:'Promemoria debiti', recordatorioDeudasDesc:'Ricevi un promemoria all\'apertura dell\'app se hai debiti in sospeso.', desactivado:'Disattivato', semanal:'Settimanale', mensual:'Mensile', recordatorioDeudas:'Hai {N} debiti in sospeso', errorCuentaRequerida:'Scegli un conto di destinazione per questo movimento.',
+      pendiente:'In sospeso', saldada:'Saldato', meDebe:'Mi deve', leDebo:'Devo', marcarSaldada:'Segna come saldato', revertirSaldado:'Annulla saldo', recordatorioDeudasTitulo:'Promemoria debiti', recordatorioDeudasDesc:'Ricevi un promemoria all\'apertura dell\'app se hai debiti in sospeso.', desactivado:'Disattivato', semanal:'Settimanale', mensual:'Mensile', recordatorioDeudas:'Hai {N} debiti in sospeso', bloqueoApp:'Blocco app', bloqueoAppDesc:'Richiedi un PIN (o impronta) per aprire l\'app.', bienvenidoTitulo:'Benvenuto in Sovereign', bienvenidoDesc:'Iniziamo creando il tuo primo conto — può essere contanti, un conto di risparmio o di investimento.', nombreCuentaEj:'Nome (es. Commbank risparmio)', saldoActual:'Saldo attuale', crearYEmpezar:'Crea conto e inizia', saltarPorAhora:'Salta per ora', tutDashTitulo:'Il tuo quadro generale', tutDashDesc:'Qui vedi tutto a colpo d\'occhio: patrimonio, spese, obiettivi... Ogni widget può essere compresso, ridimensionato e riordinato a piacere.', tutTxTitulo:'Registra i tuoi movimenti', tutTxDesc:'Aggiungi entrate e uscite, collegale a un conto o obiettivo, e il saldo si aggiorna da solo.', tutCashTitulo:'Capisci i tuoi numeri', tutCashDesc:'Confronta entrate e uscite mese per mese, o guarda l\'andamento degli ultimi 6 mesi.', tutMetasTitulo:'Fissa obiettivi', tutMetasDesc:'Crea obiettivi di risparmio e collega transazioni — il progresso sale da solo fino al completamento.', tutCriptoTitulo:'Segui i tuoi investimenti', tutCriptoDesc:'Aggiungi le tue criptovalute e controlla il prezzo in tempo reale, con grafici storici.', tutAjustesTitulo:'Rendila tua', tutAjustesDesc:'Cambia lingua, valuta, modalità scura, o attiva un PIN per proteggere i tuoi dati.', anterior:'Indietro', siguiente:'Avanti', empezar:'Inizia', saltarTutorial:'Salta il tutorial', ayudaCuentasTitulo:'I tuoi conti', ayudaCuentasDesc:'Aggiungi conti in contanti, risparmio o investimento in valute diverse. Tocca un conto per vederne o modificarne i dettagli.', ayudaGastosTitulo:'Le tue spese per categoria', ayudaGastosDesc:'Scopri dove vanno i tuoi soldi, con grafici che puoi cambiare tra barre, torta o mappa ad albero.', ayudaIngresosTitulo:'Le tue entrate per categoria', ayudaIngresosDesc:'Come Spese, ma per le tue fonti di reddito.', ayudaPresupuestoTitulo:'Tieni sotto controllo la spesa mensile', ayudaPresupuestoDesc:'Imposta un limite per categoria e guarda quanto hai speso questo mese.', ayudaRecurrentesTitulo:'Automatizza le spese abituali', ayudaRecurrentesDesc:'Abbonamenti, stipendio, affitto... Si generano da soli alla data scelta, ogni mese, settimana o anno.', ayudaDeudasTitulo:'Chi ti deve e a chi devi', ayudaDeudasDesc:'Registra i debiti in sospeso e segnali come saldati quando risolti — puoi annullare se sbagli.', ayudaImportarTitulo:'Porta i tuoi dati da altrove', ayudaImportarDesc:'Due modi: carica un CSV e indica quale colonna \u00e8 la data, l\'importo, ecc. \u2014 oppure carica un estratto conto in PDF e l\'app rileva i movimenti da sola, basta rivedere e correggere prima di confermare.', descubrir:'Scopri questa sezione', introducePin:'Inserisci il tuo PIN', pinIncorrecto:'PIN errato', introduceActual:'Inserisci il PIN attuale per disattivarlo', confirmaPin:'Conferma il tuo PIN', creaPin:'Crea un PIN di 4 cifre', pinDebeSer4:'Il PIN deve avere 4 cifre', pinNoCoincide:'I PIN non coincidono', continuar:'Continua', activado:'Attivo', activarBiometria:'Attiva sblocco biometrico', desactivarBiometria:'Disattiva biometria', errorCuentaRequerida:'Scegli un conto di destinazione per questo movimento.', diaDelMes:'Giorno del mese',
       completada:'Completato', archivada:'Archiviato', archivar:'Archivia', reactivar:'Riattiva', diasRestantes:'giorni rimanenti', plazoVencido:'scaduto',
       semanal:'Settimanale', mensual:'Mensile', anualFreq:'Annuale', pausar:'Pausa', reanudar:'Riprendi', activo:'Attivo', pausado:'In pausa' }
   };
@@ -515,8 +541,8 @@
   var BUDGET_COLORS = ['#EC4899','#F43F5E','#D946EF','#F472B6','#FB7185','#E879F9'];
   function freqLabel(freq){ return { weekly: t('semanal'), monthly: t('mensual'), yearly: t('anualFreq') }[freq] || freq; }
 
-  function defaultData(){ return { accounts: [], transactions: [], budgets: [], goals: [], recurring: [], debts: [], holdings: [], customCategories: [], dashboardOrder: ['cashflow','presupuesto','topcat','metas','recientes'], language: 'es', baseCurrency: 'AUD', secondaryCurrency: 'EUR', rates: { EUR: 1.62 }, fontSize: 'medium', chartStyleByKey: {}, collapsedWidgets: {}, widgetSize: {}, colorMode: 'system', debtReminderFreq: 'off', lastDebtReminderShown: null }; }
-  var state = { tab: 'dashboard', data: defaultData(), loading: true, importRows: null, detail: null, netWorthDays: 30, globalSearchQuery: '', cashflowView: 'month', txFormMode: 'movimiento', reportsPeriod: 3, cryptoPrices: {}, cryptoFetching: false, cryptoErrorMsg: null, cryptoHistory: {}, cryptoHistoryFetching: {}, cryptoDetailDays: 30, accountFilter: null, editingHoldingId: null,
+  function defaultData(){ return { accounts: [], transactions: [], budgets: [], goals: [], recurring: [], debts: [], holdings: [], customCategories: [], dashboardOrder: ['cashflow','presupuesto','topcat','metas','recientes'], language: 'es', baseCurrency: 'AUD', secondaryCurrency: 'EUR', rates: { EUR: 1.62 }, fontSize: 'medium', chartStyleByKey: {}, collapsedWidgets: {}, widgetSize: {}, colorMode: 'system', debtReminderFreq: 'off', lastDebtReminderShown: null, appLockEnabled: false, appLockPinHash: null, appLockBiometricCredId: null, onboardingDone: false, tutorialDone: false, helpSeen: {} }; }
+  var state = { tab: 'dashboard', data: defaultData(), loading: true, importRows: null, detail: null, netWorthDays: 30, globalSearchQuery: '', cashflowView: 'month', txFormMode: 'movimiento', reportsPeriod: 3, cryptoPrices: {}, cryptoFetching: false, cryptoErrorMsg: null, cryptoHistory: {}, cryptoHistoryFetching: {}, cryptoDetailDays: 30, accountFilter: null, editingHoldingId: null, locked: false, lockPinInput: '', lockError: false, lockSetupStep: null, lockSetupPin: '', onboardingDone: null, showTutorial: false, tutorialStep: 0,
     addOpen: { cuentas:false, transacciones:false, recurrentes:false, presupuesto:false, metas:false, deudas:false, cripto:false },
     txSelectMode: false, txSelected: {}, txConfirmBulkDelete: false, pendingCategoryFilter: null };
 
@@ -617,18 +643,26 @@
     var names = MONTHS_SHORT[lang] || MONTHS_SHORT.es;
     return names[parseInt(parts[1],10)-1] + ' ' + parts[0].slice(2);
   }
-  function addInterval(dateStr, freq){
+  function addInterval(dateStr, freq, dayOfMonth){
     var d = new Date(dateStr + 'T00:00:00');
     if (freq === 'weekly') d.setDate(d.getDate() + 7);
     else if (freq === 'yearly') d.setFullYear(d.getFullYear() + 1);
-    else d.setMonth(d.getMonth() + 1);
+    else {
+      var targetMonth = d.getMonth() + 1;
+      var targetYear = d.getFullYear();
+      if (targetMonth > 11){ targetMonth = 0; targetYear++; }
+      var day = dayOfMonth || d.getDate();
+      var lastDayOfTargetMonth = new Date(targetYear, targetMonth + 1, 0).getDate();
+      day = Math.min(day, lastDayOfTargetMonth);
+      d = new Date(targetYear, targetMonth, day);
+    }
     return d.toISOString().slice(0,10);
   }
   function generateDueRecurring(){
     var d = state.data, today = new Date().toISOString().slice(0,10), changed = false;
     (d.recurring || []).forEach(function(rec){
       if (!rec.active) return;
-      var next = rec.lastGenerated ? addInterval(rec.lastGenerated, rec.frequency) : rec.startDate;
+      var next = rec.lastGenerated ? addInterval(rec.lastGenerated, rec.frequency, rec.dayOfMonth) : rec.startDate;
       var guard = 0;
       while (next <= today && guard < 60){
         var tr = { id: uid(), date: next, desc: rec.desc, amount: rec.amount, currency: rec.currency, kind: rec.kind, category: rec.category, accountId: rec.accountId || null, goalId: rec.goalId || null, recurringId: rec.id };
@@ -636,7 +670,7 @@
         applyTxToAccount(tr, 1);
         applyTxToGoal(tr, 1);
         rec.lastGenerated = next;
-        next = addInterval(next, rec.frequency);
+        next = addInterval(next, rec.frequency, rec.dayOfMonth);
         changed = true;
         guard++;
       }
@@ -812,6 +846,15 @@
       loaded.colorMode = loaded.colorMode || 'system';
       loaded.debtReminderFreq = loaded.debtReminderFreq || 'off';
       loaded.lastDebtReminderShown = loaded.lastDebtReminderShown || null;
+      loaded.appLockEnabled = loaded.appLockEnabled || false;
+      loaded.appLockPinHash = loaded.appLockPinHash || null;
+      loaded.appLockBiometricCredId = loaded.appLockBiometricCredId || null;
+      if (loaded.onboardingDone === undefined) loaded.onboardingDone = loaded.accounts.length > 0;
+      if (loaded.tutorialDone === undefined) loaded.tutorialDone = loaded.accounts.length > 0;
+      loaded.helpSeen = loaded.helpSeen || {};
+      loaded.recurring.forEach(function(rec){
+        if (rec.frequency === 'monthly' && !rec.dayOfMonth) rec.dayOfMonth = new Date(rec.startDate + 'T00:00:00').getDate();
+      });
       if (Array.isArray(loaded.dashboardOrder)) loaded.dashboardOrder = loaded.dashboardOrder.filter(function(id){ return id !== 'typeBreakdown'; });
       if (loaded.chartStyle){ loaded.chartStyleByKey.expense = loaded.chartStyleByKey.expense || loaded.chartStyle; loaded.chartStyleByKey.income = loaded.chartStyleByKey.income || loaded.chartStyle; delete loaded.chartStyle; }
       if (loaded.rate && !loaded.rates){
@@ -835,6 +878,7 @@
       if (needsSave) await saveData();
     } catch(e){ state.data = defaultData(); }
     state.loading = false;
+    if (state.data.appLockEnabled && state.data.appLockPinHash) state.locked = true;
     checkDebtReminder();
     render();
     if (cloudSyncConfigured){
@@ -940,6 +984,51 @@
     render();
     if (btn) btn.classList.remove('lb-spin');
   };
+  var HELP_CONTENT = {
+    dashboard: function(){ return [t('tutDashTitulo'), t('tutDashDesc')]; },
+    cuentas: function(){ return [t('ayudaCuentasTitulo'), t('ayudaCuentasDesc')]; },
+    transacciones: function(){ return [t('tutTxTitulo'), t('tutTxDesc')]; },
+    cashflow: function(){ return [t('tutCashTitulo'), t('tutCashDesc')]; },
+    gastos: function(){ return [t('ayudaGastosTitulo'), t('ayudaGastosDesc')]; },
+    ingresos: function(){ return [t('ayudaIngresosTitulo'), t('ayudaIngresosDesc')]; },
+    presupuesto: function(){ return [t('ayudaPresupuestoTitulo'), t('ayudaPresupuestoDesc')]; },
+    recurrentes: function(){ return [t('ayudaRecurrentesTitulo'), t('ayudaRecurrentesDesc')]; },
+    metas: function(){ return [t('tutMetasTitulo'), t('tutMetasDesc')]; },
+    deudas: function(){ return [t('ayudaDeudasTitulo'), t('ayudaDeudasDesc')]; },
+    cripto: function(){ return [t('tutCriptoTitulo'), t('tutCriptoDesc')]; },
+    importar: function(){ return [t('ayudaImportarTitulo'), t('ayudaImportarDesc')]; },
+    ajustes: function(){ return [t('tutAjustesTitulo'), t('tutAjustesDesc')]; }
+  };
+  function attachDiscoverIcon(){
+    if (state.data.helpSeen[state.tab]) return;
+    var builder = HELP_CONTENT[state.tab];
+    if (!builder) return;
+    var content = document.getElementById('lb-content');
+    var titleEl = content.querySelector('.lb-serif, .lb-section-title');
+    if (!titleEl) return;
+    var entry = builder();
+    var icon = el('button', {class:'lb-discover-icon', type:'button', 'aria-label': t('descubrir'), onclick: function(e){
+      e.stopPropagation();
+      showDiscoverPopover(icon, entry);
+    }}, [el('div', {html:'<svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l1.9 6.1L20 10l-6.1 1.9L12 18l-1.9-6.1L4 10l6.1-1.9L12 2z"/></svg>'})]);
+    titleEl.parentNode.insertBefore(icon, titleEl.nextSibling);
+  }
+  function showDiscoverPopover(anchor, entry){
+    var existing = document.querySelector('.lb-discover-popover');
+    if (existing) existing.remove();
+    var rect = anchor.getBoundingClientRect();
+    var pop = el('div', {class:'lb-discover-popover', style:'top:'+(rect.bottom + window.scrollY + 8)+'px; left:'+Math.max(12, rect.left + window.scrollX - 100)+'px;'}, [
+      el('p', {style:'font-size:13px; font-weight:700; margin:0 0 4px;'}, [entry[0]]),
+      el('p', {style:'font-size:12px; color:var(--lb-text-muted); margin:0; line-height:1.4;'}, [entry[1]])
+    ]);
+    document.body.appendChild(pop);
+    state.data.helpSeen[state.tab] = true;
+    saveData();
+    anchor.remove();
+    function dismiss(e){ if (!pop.contains(e.target)){ pop.remove(); document.removeEventListener('click', dismiss); } }
+    setTimeout(function(){ document.addEventListener('click', dismiss); }, 10);
+    setTimeout(function(){ if (pop.parentNode) pop.remove(); }, 6000);
+  }
   function renderNav(){
     var wrap = document.getElementById('lb-nav');
     wrap.innerHTML = '';
@@ -2241,7 +2330,7 @@
 
   function renderRecurringModal(rec){
     var d = state.detail;
-    var next = rec.lastGenerated ? addInterval(rec.lastGenerated, rec.frequency) : rec.startDate;
+    var next = rec.lastGenerated ? addInterval(rec.lastGenerated, rec.frequency, rec.dayOfMonth) : rec.startDate;
     if (!d.editing){
       var body = [
         el('div', {}, [
@@ -2272,13 +2361,15 @@
     eCat.value = rec.category;
     var eFreq = el('select', {class:'lb-select', style:'margin-bottom:8px;'}, [ el('option',{value:'monthly'},[t('mensual')]), el('option',{value:'weekly'},[t('semanal')]), el('option',{value:'yearly'},[t('anualFreq')]) ]);
     eFreq.value = rec.frequency;
+    var eDayOfMonth = el('input', {class:'lb-input', type:'number', min:'1', max:'31', style:'margin-bottom:8px;' + (rec.frequency !== 'monthly' ? ' display:none;' : ''), placeholder:t('diaDelMes'), value:String(rec.dayOfMonth || new Date(rec.startDate).getDate())});
+    eFreq.addEventListener('change', function(){ eDayOfMonth.style.display = eFreq.value === 'monthly' ? '' : 'none'; });
     var eAcc = el('select', {class:'lb-select', style:'margin-bottom:8px;'}, [el('option',{value:''},[t('sinCuentaAsoc')])].concat(state.data.accounts.map(function(a){ return el('option',{value:a.id},[a.name+' ('+a.currency+')']); })));
     eAcc.value = rec.accountId || '';
     var eGoal = el('select', {class:'lb-select', style:'margin-bottom:8px;'}, [el('option',{value:''},[t('sinMetaAsoc')])].concat(state.data.goals.map(function(g){ return el('option',{value:g.id},[g.name]); })));
     eGoal.value = rec.goalId || '';
     var editRecurError = el('p', {style:'font-size:12px; color:#DC2626; margin:0 0 8px; display:none;'}, [t('errorCuentaRequerida')]);
     var body = [
-      el('div', {}, [eDesc, eAmount, eCur, eKind, eCat, eFreq, eAcc, eGoal, editRecurError]),
+      el('div', {}, [eDesc, eAmount, eCur, eKind, eCat, eFreq, eDayOfMonth, eAcc, eGoal, editRecurError]),
       el('div', {style:'display:flex; gap:8px; margin-top:6px;'}, [
         el('button', {class:'lb-btn', style:'flex:1;', onclick: async function(){
           if (!eAcc.value){
@@ -2288,6 +2379,7 @@
           }
           rec.desc = eDesc.value.trim() || rec.desc; rec.amount = Math.abs(parseFloat(eAmount.value)) || rec.amount;
           rec.currency = eCur.value; rec.kind = eKind.value; rec.category = eCat.value; rec.frequency = eFreq.value;
+          rec.dayOfMonth = eFreq.value === 'monthly' ? Math.min(31, Math.max(1, parseInt(eDayOfMonth.value) || rec.dayOfMonth)) : null;
           rec.accountId = eAcc.value || null; rec.goalId = eGoal.value || null;
           d.editing = false; render(); saveData();
         }}, [t('guardar')]),
@@ -2530,9 +2622,9 @@
 
   function renderDashboard(container){
     var totals = computeTotals();
-    var stripRow = el('div', {style:'display:flex; gap:12px; margin:-14px -4px -4px; padding:14px 4px 20px; flex-wrap:nowrap; overflow-x:auto;'});
+    var stripRow = el('div', {class:'lb-patrimonio-strip', style:'display:flex; gap:12px; margin:-14px -4px -4px; padding:14px 4px 20px; flex-wrap:nowrap; overflow-x:auto;'});
     [['cash',t('efectivo')],['savings',t('ahorro')],['investment',t('inversion')]].forEach(function(p){
-      stripRow.appendChild(el('div', {class:'lb-card lb-card-click', style:'flex:1; min-width:0;', onclick: function(){ state.tab = 'cuentas'; render(); }}, [
+      stripRow.appendChild(el('div', {class:'lb-card lb-card-click lb-patrimonio-strip-card', style:'flex:1; min-width:0; overflow:hidden;', onclick: function(){ state.tab = 'cuentas'; render(); }}, [
         el('p', {style:'font-size:12px; color:var(--lb-text-muted); margin:0 0 6px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;'}, [p[1]]),
         dualNode(totals.byType[p[0]], null, '19px')
       ]));
@@ -3045,9 +3137,11 @@
     catSelect.value = 'Suscripciones';
     var freqSelect = el('select', {class:'lb-select'}, [ el('option',{value:'monthly'},[t('mensual')]), el('option',{value:'weekly'},[t('semanal')]), el('option',{value:'yearly'},[t('anualFreq')]) ]);
     var startInput = el('input', {class:'lb-input', type:'date', value: new Date().toISOString().slice(0,10)});
+    var dayOfMonthInput = el('input', {class:'lb-input', type:'number', min:'1', max:'31', placeholder:t('diaDelMes'), value:String(new Date().getDate())});
+    freqSelect.addEventListener('change', function(){ dayOfMonthInput.style.display = freqSelect.value === 'monthly' ? '' : 'none'; });
     var accSelect = el('select', {class:'lb-select'}, [el('option',{value:''},[t('sinCuentaAsoc')])].concat(state.data.accounts.map(function(a){ return el('option',{value:a.id},[a.name+' ('+a.currency+')']); })));
     var goalSelect = el('select', {class:'lb-select'}, [el('option',{value:''},[t('sinMetaAsoc')])].concat(state.data.goals.map(function(g){ return el('option',{value:g.id},[g.name]); })));
-    [descInput, amountInput, curSelect, kindSelect, catSelect, freqSelect, startInput, accSelect, goalSelect].forEach(function(x){ grid.appendChild(x); });
+    [descInput, amountInput, curSelect, kindSelect, catSelect, freqSelect, dayOfMonthInput, startInput, accSelect, goalSelect].forEach(function(x){ grid.appendChild(x); });
     form.appendChild(grid);
     var recurError = el('p', {style:'font-size:12px; color:#DC2626; margin:0 0 8px; display:none;'}, [t('errorCuentaRequerida')]);
     form.appendChild(recurError);
@@ -3064,6 +3158,7 @@
         id: uid(), desc: descInput.value.trim(), amount: Math.abs(parseFloat(amountInput.value)),
         currency: curSelect.value, kind: kindSelect.value, category: catSelect.value,
         frequency: freqSelect.value, startDate: startInput.value || new Date().toISOString().slice(0,10),
+        dayOfMonth: freqSelect.value === 'monthly' ? Math.min(31, Math.max(1, parseInt(dayOfMonthInput.value) || new Date().getDate())) : null,
         accountId: accSelect.value || null, goalId: goalSelect.value || null, active: true, lastGenerated: null
       });
       generateDueRecurring();
@@ -3077,7 +3172,7 @@
     list.appendChild(el('p', {class:'lb-serif', style:'font-size:16px; margin:0 0 10px;'}, ['Tus recurrentes']));
     if (state.data.recurring.length === 0) list.appendChild(el('p', {style:'font-size:13px; color:var(--lb-text-muted);'}, ['Sin movimientos recurrentes todav\u00eda.']));
     state.data.recurring.forEach(function(rec){
-      var next = rec.lastGenerated ? addInterval(rec.lastGenerated, rec.frequency) : rec.startDate;
+      var next = rec.lastGenerated ? addInterval(rec.lastGenerated, rec.frequency, rec.dayOfMonth) : rec.startDate;
       var color = rec.kind === 'income' ? '#15803D' : '#DC2626';
       var sign = rec.kind === 'income' ? '+' : '\u2212';
       list.appendChild(el('div', {class:'lb-row-click', style: rec.active ? '' : 'opacity:0.5;', onclick: function(){ openDetail('recurring', rec.id); }}, [
@@ -3623,7 +3718,7 @@
         el('p', {class:'lb-num', style:'font-size:22px; font-weight:700; margin:0;'}, [fmt(totalValue, state.data.baseCurrency)])
       ]),
       el('button', {id:'lb-crypto-refresh-btn', class:'lb-hamburger-btn', style:'display:flex;', onclick: function(){ refreshCryptoPrices(); }}, [
-        el('div', {html: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 4v6h-6"/><path d="M1 20v-6h6"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>'})
+        el('div', {html: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--lb-text)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 4v6h-6"/><path d="M1 20v-6h6"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>'})
       ])
     ]));
     if (state.cryptoFetching){
@@ -4291,6 +4386,72 @@
     backupCard.appendChild(backupStatus);
     container.appendChild(backupCard);
 
+    var lockCard = el('div', {class:'lb-card', style:'margin-top:16px;'});
+    lockCard.appendChild(el('p', {class:'lb-serif', style:'font-size:16px; margin:0 0 8px;'}, [t('bloqueoApp')]));
+    lockCard.appendChild(el('p', {style:'font-size:13px; color:var(--lb-text-muted); margin:0 0 12px;'}, [t('bloqueoAppDesc')]));
+
+    if (state.lockSetupStep){
+      var setupPinInput = el('input', {class:'lb-input', type:'password', inputmode:'numeric', maxlength:'4', placeholder:'\u2022\u2022\u2022\u2022', autofocus:true, style:'margin-bottom:10px; text-align:center; letter-spacing:8px; font-size:20px;'});
+      var setupError = el('p', {style:'font-size:12px; color:#DC2626; margin:0 0 8px; display:none;'});
+      lockCard.appendChild(el('p', {style:'font-size:13px; font-weight:600; margin:0 0 8px;'}, [
+        state.lockSetupStep === 'current' ? t('introduceActual') : (state.lockSetupStep === 'confirm' ? t('confirmaPin') : t('creaPin'))
+      ]));
+      lockCard.appendChild(setupPinInput);
+      lockCard.appendChild(setupError);
+      lockCard.appendChild(el('div', {style:'display:flex; gap:8px;'}, [
+        el('button', {class:'lb-btn', style:'flex:1;', onclick: async function(){
+          var val = setupPinInput.value;
+          if (!/^\d{4}$/.test(val)){ setupError.textContent = t('pinDebeSer4'); setupError.style.display = ''; return; }
+          if (state.lockSetupStep === 'current'){
+            var hash = await hashPin(val);
+            if (hash !== state.data.appLockPinHash){ setupError.textContent = t('pinIncorrecto'); setupError.style.display = ''; return; }
+            state.data.appLockEnabled = false; state.data.appLockPinHash = null; state.data.appLockBiometricCredId = null;
+            state.lockSetupStep = null; render(); saveData();
+          } else if (state.lockSetupStep === 'enter'){
+            state.lockSetupPin = val; state.lockSetupStep = 'confirm'; render();
+          } else if (state.lockSetupStep === 'confirm'){
+            if (val !== state.lockSetupPin){ setupError.textContent = t('pinNoCoincide'); setupError.style.display = ''; return; }
+            state.data.appLockPinHash = await hashPin(val);
+            state.data.appLockEnabled = true;
+            state.lockSetupStep = null; state.lockSetupPin = '';
+            render(); saveData();
+          }
+        }}, [t('continuar')]),
+        el('button', {class:'lb-btn-ghost lb-btn', style:'flex:1;', onclick: function(){ state.lockSetupStep = null; state.lockSetupPin = ''; render(); }}, [t('cancelar')])
+      ]));
+    } else {
+      lockCard.appendChild(el('div', {style:'display:inline-flex; gap:2px; background:var(--lb-bg-alt); border-radius:11px; padding:3px; margin-bottom:10px;'}, [
+        el('button', {class:'lb-segment-btn' + (!state.data.appLockEnabled ? ' active' : ''), onclick: function(){
+          if (state.data.appLockEnabled) state.lockSetupStep = 'current'; else state.lockSetupStep = 'enter';
+          render();
+        }}, [t('desactivado')]),
+        el('button', {class:'lb-segment-btn' + (state.data.appLockEnabled ? ' active' : ''), onclick: function(){
+          if (!state.data.appLockEnabled) state.lockSetupStep = 'enter';
+          render();
+        }}, [t('activado')])
+      ]));
+      if (state.data.appLockEnabled && window.PublicKeyCredential){
+        var bioOn = !!state.data.appLockBiometricCredId;
+        lockCard.appendChild(el('button', {class:'lb-btn-ghost lb-btn', onclick: async function(){
+          if (bioOn){ state.data.appLockBiometricCredId = null; render(); saveData(); return; }
+          try {
+            var cred = await navigator.credentials.create({ publicKey: {
+              challenge: crypto.getRandomValues(new Uint8Array(32)),
+              rp: { name: 'Sovereign' },
+              user: { id: crypto.getRandomValues(new Uint8Array(16)), name: 'usuario', displayName: 'Usuario' },
+              pubKeyCredParams: [{ type:'public-key', alg:-7 }, { type:'public-key', alg:-257 }],
+              authenticatorSelection: { userVerification: 'required', authenticatorAttachment: 'platform' },
+              timeout: 30000
+            }});
+            var rawId = new Uint8Array(cred.rawId);
+            state.data.appLockBiometricCredId = btoa(String.fromCharCode.apply(null, rawId));
+            render(); saveData();
+          } catch(e){ console.error('No se pudo registrar biometr\u00eda', e); }
+        }}, [bioOn ? t('desactivarBiometria') : t('activarBiometria')]));
+      }
+    }
+    container.appendChild(lockCard);
+
     var danger = el('div', {class:'lb-card', style:'margin-top:16px; border-color:#FECACA;'});
     danger.appendChild(el('p', {class:'lb-serif', style:'font-size:16px; margin:0 0 8px;'}, [t('borrarTodosDatos')]));
     danger.appendChild(el('p', {style:'font-size:13px; color:var(--lb-text-muted); margin:0 0 10px;'}, [t('borrarTodosDesc')]));
@@ -4299,6 +4460,11 @@
     }
   }
 
+  async function hashPin(pin){
+    var enc = new TextEncoder().encode('sovereign-lock-salt:' + pin);
+    var buf = await crypto.subtle.digest('SHA-256', enc);
+    return Array.from(new Uint8Array(buf)).map(function(b){ return b.toString(16).padStart(2,'0'); }).join('');
+  }
   var systemDarkQuery = (typeof window.matchMedia === 'function') ? window.matchMedia('(prefers-color-scheme: dark)') : null;
   function applyColorMode(){
     var mode = state.data.colorMode || 'system';
@@ -4347,6 +4513,140 @@
     state.data.lastDebtReminderShown = now.toISOString();
     saveData();
   }
+  function renderLockScreen(){
+    var root = document.getElementById('lb-lock-root');
+    var mainLayout = document.getElementById('lb-main-layout');
+    if (!state.locked){
+      root.innerHTML = '';
+      mainLayout.style.display = '';
+      return;
+    }
+    mainLayout.style.display = 'none';
+    root.innerHTML = '';
+    var screen = el('div', {class:'lb-lock-screen'});
+    screen.appendChild(el('img', {src: document.querySelector('.lb-logo-icon') ? document.querySelector('.lb-logo-icon').src : '', width:'56', height:'56', style:'border-radius:12px; margin-bottom:8px;'}));
+    screen.appendChild(el('p', {class:'lb-serif', style:'font-size:16px; margin:0;'}, [t('introducePin')]));
+    var dotsWrap = el('div', {class:'lb-lock-dots' + (state.lockError ? ' lb-lock-shake' : '')});
+    for (var i = 0; i < 4; i++){
+      dotsWrap.appendChild(el('div', {class:'lb-lock-dot' + (state.lockError ? ' error' : (i < state.lockPinInput.length ? ' filled' : ''))}));
+    }
+    screen.appendChild(dotsWrap);
+    if (state.lockError) screen.appendChild(el('p', {style:'font-size:12px; color:#DC2626; margin:-16px 0 16px;'}, [t('pinIncorrecto')]));
+
+    function tryUnlock(){
+      hashPin(state.lockPinInput).then(function(hash){
+        if (hash === state.data.appLockPinHash){
+          state.locked = false; state.lockPinInput = ''; state.lockError = false;
+          render();
+        } else {
+          state.lockError = true;
+          render();
+          setTimeout(function(){ state.lockPinInput = ''; state.lockError = false; render(); }, 600);
+        }
+      });
+    }
+    var keypad = el('div', {class:'lb-lock-keypad'});
+    ['1','2','3','4','5','6','7','8','9'].forEach(function(n){
+      keypad.appendChild(el('button', {class:'lb-lock-key', onclick: function(){
+        if (state.lockPinInput.length >= 4 || state.lockError) return;
+        state.lockPinInput += n;
+        if (state.lockPinInput.length === 4){ render(); tryUnlock(); } else render();
+      }}, [n]));
+    });
+    var bioAvailable = !!state.data.appLockBiometricCredId && window.PublicKeyCredential;
+    keypad.appendChild(el('button', {class:'lb-lock-key lb-lock-key-ghost', onclick: bioAvailable ? function(){
+      navigator.credentials.get({ publicKey: { challenge: crypto.getRandomValues(new Uint8Array(32)), allowCredentials: [{ id: Uint8Array.from(atob(state.data.appLockBiometricCredId), function(c){ return c.charCodeAt(0); }), type:'public-key' }], userVerification:'required', timeout: 30000 } }).then(function(){
+        state.locked = false; state.lockPinInput = ''; render();
+      }).catch(function(){});
+    } : null}, [bioAvailable ? el('div', {html:'<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2a5 5 0 0 0-5 5v2a5 5 0 0 0 10 0V7a5 5 0 0 0-5-5z"/><path d="M4 14c0 4 3 7 8 7s8-3 8-7"/><path d="M8 14v-2M16 14v-2M12 16v3"/></svg>'}) : '']));
+    keypad.appendChild(el('button', {class:'lb-lock-key', onclick: function(){
+      if (state.lockError) return;
+      state.lockPinInput += '0';
+      if (state.lockPinInput.length === 4){ render(); tryUnlock(); } else render();
+    }}, ['0']));
+    keypad.appendChild(el('button', {class:'lb-lock-key lb-lock-key-ghost', onclick: function(){
+      if (state.lockError) return;
+      state.lockPinInput = state.lockPinInput.slice(0,-1); render();
+    }}, ['\u232B']));
+    screen.appendChild(keypad);
+    root.appendChild(screen);
+    if (bioAvailable && state.lockPinInput === '' && !state.lockError && !state.lockBiometricTried){
+      state.lockBiometricTried = true;
+      navigator.credentials.get({ publicKey: { challenge: crypto.getRandomValues(new Uint8Array(32)), allowCredentials: [{ id: Uint8Array.from(atob(state.data.appLockBiometricCredId), function(c){ return c.charCodeAt(0); }), type:'public-key' }], userVerification:'required', timeout: 30000 } }).then(function(){
+        state.locked = false; render();
+      }).catch(function(){});
+    }
+  }
+  function renderOnboarding(){
+    var root = document.getElementById('lb-onboarding-root');
+    var showOnboarding = !state.data.onboardingDone && state.data.accounts.length === 0 && !state.locked;
+    if (!showOnboarding){ root.innerHTML = ''; return; }
+    root.innerHTML = '';
+    var screen = el('div', {class:'lb-onboarding-screen'});
+    var card = el('div', {class:'lb-onboarding-card'});
+    card.appendChild(el('img', {src: document.querySelector('.lb-logo-icon') ? document.querySelector('.lb-logo-icon').src : '', width:'56', height:'56', style:'border-radius:12px; margin-bottom:16px;'}));
+    card.appendChild(el('p', {class:'lb-serif', style:'font-size:22px; margin:0 0 8px;'}, [t('bienvenidoTitulo')]));
+    card.appendChild(el('p', {style:'font-size:14px; color:var(--lb-text-muted); margin:0 0 24px;'}, [t('bienvenidoDesc')]));
+
+    var nameInput = el('input', {class:'lb-input', placeholder:t('nombreCuentaEj'), style:'margin-bottom:10px; text-align:left;'});
+    var typeSelect = el('select', {class:'lb-select', style:'margin-bottom:10px;'}, [ el('option',{value:'cash'},[t('efectivo')]), el('option',{value:'savings'},[t('ahorro')]), el('option',{value:'investment'},[t('inversion')]) ]);
+    var curSelect = el('select', {class:'lb-select', style:'margin-bottom:10px;'}, ['AUD','USD','EUR','GBP'].map(function(c){ return el('option',{value:c},[c]); }));
+    var balInput = el('input', {class:'lb-input', type:'number', step:'0.01', placeholder:t('saldoActual'), value:'0', style:'margin-bottom:16px; text-align:left;'});
+    card.appendChild(el('div', {style:'text-align:left;'}, [nameInput, typeSelect, curSelect, balInput]));
+
+    card.appendChild(el('button', {class:'lb-btn', style:'width:100%; margin-bottom:10px;', onclick: function(){
+      if (!nameInput.value.trim()) return;
+      state.data.accounts.push({ id: uid(), name: nameInput.value.trim(), type: typeSelect.value, currency: curSelect.value, balance: parseFloat(balInput.value) || 0 });
+      state.data.baseCurrency = curSelect.value;
+      state.data.onboardingDone = true;
+      state.showTutorial = true;
+      render(); saveData();
+    }}, [t('crearYEmpezar')]));
+    card.appendChild(el('button', {class:'lb-btn-ghost lb-btn', style:'width:100%;', onclick: function(){
+      state.data.onboardingDone = true;
+      render(); saveData();
+    }}, [t('saltarPorAhora')]));
+    screen.appendChild(card);
+    root.appendChild(screen);
+  }
+  function renderTutorial(){
+    var root = document.getElementById('lb-onboarding-root');
+    if (!state.showTutorial) return;
+    var slides = [
+      { icon: NAV_ICONS.dashboard, title: t('tutDashTitulo'), desc: t('tutDashDesc') },
+      { icon: NAV_ICONS.transacciones, title: t('tutTxTitulo'), desc: t('tutTxDesc') },
+      { icon: NAV_ICONS.cashflow, title: t('tutCashTitulo'), desc: t('tutCashDesc') },
+      { icon: NAV_ICONS.metas, title: t('tutMetasTitulo'), desc: t('tutMetasDesc') },
+      { icon: NAV_ICONS.cripto, title: t('tutCriptoTitulo'), desc: t('tutCriptoDesc') },
+      { icon: NAV_ICONS.ajustes, title: t('tutAjustesTitulo'), desc: t('tutAjustesDesc') }
+    ];
+    var i = state.tutorialStep;
+    var slide = slides[i];
+    root.innerHTML = '';
+    var screen = el('div', {class:'lb-onboarding-screen'});
+    var card = el('div', {class:'lb-onboarding-card'});
+    card.appendChild(el('div', {style:'width:64px; height:64px; border-radius:16px; background:var(--lb-bg-alt); display:flex; align-items:center; justify-content:center; margin:0 auto 20px;', html: '<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#FF6600" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">'+slide.icon+'</svg>'}));
+    card.appendChild(el('p', {class:'lb-serif', style:'font-size:19px; margin:0 0 10px;'}, [slide.title]));
+    card.appendChild(el('p', {style:'font-size:14px; color:var(--lb-text-muted); margin:0; line-height:1.5;'}, [slide.desc]));
+    var dotsRow = el('div', {class:'lb-tutorial-dots'});
+    slides.forEach(function(s, idx){ dotsRow.appendChild(el('div', {class:'lb-tutorial-dot' + (idx === i ? ' active' : '')})); });
+    card.appendChild(dotsRow);
+    var isLast = i === slides.length - 1;
+    var btnRow = el('div', {style:'display:flex; gap:8px;'});
+    if (i > 0){
+      btnRow.appendChild(el('button', {class:'lb-btn-ghost lb-btn', style:'flex:1;', onclick: function(){ state.tutorialStep--; render(); }}, [t('anterior')]));
+    }
+    btnRow.appendChild(el('button', {class:'lb-btn', style:'flex:2;', onclick: function(){
+      if (isLast){ state.showTutorial = false; state.data.tutorialDone = true; render(); saveData(); }
+      else { state.tutorialStep++; render(); }
+    }}, [isLast ? t('empezar') : t('siguiente')]));
+    card.appendChild(btnRow);
+    if (!isLast){
+      card.appendChild(el('button', {class:'lb-btn-ghost lb-btn', style:'width:100%; margin-top:6px; font-size:12px;', onclick: function(){ state.showTutorial = false; state.data.tutorialDone = true; render(); saveData(); }}, [t('saltarTutorial')]));
+    }
+    screen.appendChild(card);
+    root.appendChild(screen);
+  }
   function renderToasts(){
     var root = document.getElementById('lb-toast-root');
     var queue = state.toastQueue || [];
@@ -4369,6 +4669,9 @@
   var lastRenderedTab = null;
   var wasLoading = true;
   function render(){
+    renderLockScreen();
+    if (state.showTutorial) renderTutorial(); else renderOnboarding();
+    if (state.locked) return;
     renderNav();
     renderGlobalSearch();
     renderHero();
@@ -4393,6 +4696,7 @@
     else if (state.tab === 'cripto') renderCripto(wrap);
     else if (state.tab === 'importar') renderImportar(wrap);
     else if (state.tab === 'ajustes') renderAjustes(wrap);
+    attachDiscoverIcon();
     renderModal();
     applyFontSize();
     applyColorMode();
